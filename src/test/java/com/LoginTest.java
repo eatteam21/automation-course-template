@@ -46,40 +46,40 @@ public class LoginTest extends BasicTest {
 
 //viet scrip flow add to cart - checkout - verify msg mua hang thanh cong
 //add to cart
-        AndroidElement addToCartBtn = (AndroidElement) driver.findElementByXPath("//*[@class='android.widget.TextView'])[1]");
-        loginBtn.click();
+        AndroidElement addToCartBtn = (AndroidElement) driver.findElementByXPath("//*[contains(@text,'ADD TO CART')][1]");
+        addToCartBtn.click();
         Utils.hardWait();
 //view cart
         AndroidElement viewCartBtn = (AndroidElement) driver.findElementByXPath("//android.view.ViewGroup[@content-desc='test-Cart']/android.view.ViewGroup/android.widget.ImageView");
-        loginBtn.click();
+        viewCartBtn.click();
         Utils.hardWait();
 //checkout
         AndroidElement checkOutBtn = (AndroidElement) driver.findElementByXPath("//*[contains(@text,'CHECKOUT')]");
-        loginBtn.click();
+        checkOutBtn.click();
         Utils.hardWait();
 //input text
         AndroidElement firtNameBox = (AndroidElement) driver.findElementByXPath("//*[contains(@text,'First Name')]");
-        usernameBox.clear();
-        usernameBox.sendKeys("Lan");
+        firtNameBox.clear();
+        firtNameBox.sendKeys("Lan");
 
-        AndroidElement lastNamedBox = (AndroidElement) driver.findElementByXPath("//*[contains(@text,'Last Name')]");
-        passwordBox.clear();
-        passwordBox.sendKeys("Nguyen");
+        AndroidElement lastNameBox = (AndroidElement) driver.findElementByXPath("//*[contains(@text,'Last Name')]");
+        lastNameBox.clear();
+        lastNameBox.sendKeys("Nguyen");
 
         AndroidElement zipCodeBox = (AndroidElement) driver.findElementByXPath("//*[contains(@text,'Zip/Postal Code')]");
-        passwordBox.clear();
-        passwordBox.sendKeys("1807");
+        zipCodeBox.clear();
+        zipCodeBox.sendKeys("1807");
 
         AndroidElement continueBtn = (AndroidElement) driver.findElementByXPath("//*[contains(@text,'CONTINUE')]");
-        loginBtn.click();
+        continueBtn.click();
         Utils.hardWait();
 //finish
         AndroidElement finishBtn = (AndroidElement) driver.findElementByXPath("//*[contains(@text,'FINISH')]");
-        loginBtn.click();
+        finishBtn.click();
         Utils.hardWait();
 //verify
-        AndroidElement checkoutSucc = (AndroidElement) driver.findElementByXPath("//*[contains(@text,'FINISH')]");
-        Assert.assertTrue(notif.isDisplayed());
+        AndroidElement checkoutSuccess = (AndroidElement) driver.findElementByXPath("//*[contains(@text,'FINISH')]");
+        Assert.assertTrue(checkoutSuccess.isDisplayed());
 
 
     }
