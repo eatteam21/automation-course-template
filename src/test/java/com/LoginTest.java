@@ -74,11 +74,11 @@ public class LoginTest extends BasicTest {
         continueBtn.click();
         Utils.hardWait();
 //finish
-        AndroidElement finishBtn = (AndroidElement) driver.findElementByXPath("//*[contains(@text,'FINISH')]");
+        AndroidElement finishBtn = (AndroidElement) driver.findElementByXPath("//android.view.ViewGroup[@content-desc='test-FINISH']");
         finishBtn.click();
         Utils.hardWait();
 //verify
-        AndroidElement checkoutSuccess = (AndroidElement) driver.findElementByXPath("//*[contains(@text,'FINISH')]");
+        AndroidElement checkoutSuccess = (AndroidElement) driver.findElementByXPath("//*[contains(@text,'CHECKOUT: COMPLETE!')]");
         Assert.assertTrue(checkoutSuccess.isDisplayed());
 
 
