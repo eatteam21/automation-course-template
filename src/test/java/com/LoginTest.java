@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.utils.Utils;
-
+import com.utils.MobileActions;
 import com.utils.BasicTest;
 
 
@@ -72,12 +72,21 @@ public class LoginTest extends BasicTest {
 
         AndroidElement continueBtn = (AndroidElement) driver.findElementByXPath("//*[contains(@text,'CONTINUE')]");
         continueBtn.click();
-        Utils.hardWait();
-//finish
+        Utils.hardWait(); // 3s
+
+
+        // scroll down
+        MobileActions mobileActions = new MobileActions(driver);
+        mobileActions.verticalSwipeByPercentages(0.7, 0.3, 0.5);
+        Utils.hardWait(1000); //1s
+
+
+        //finish
         AndroidElement finishBtn = (AndroidElement) driver.findElementByXPath("//android.view.ViewGroup[@content-desc='test-FINISH']");
         finishBtn.click();
         Utils.hardWait();
-//verify
+        
+        //verify
         AndroidElement checkoutSuccess = (AndroidElement) driver.findElementByXPath("//*[contains(@text,'CHECKOUT: COMPLETE!')]");
         Assert.assertTrue(checkoutSuccess.isDisplayed());
 
