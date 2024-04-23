@@ -49,6 +49,7 @@ public class LoginTest extends BasicTest {
         AndroidElement addToCartBtn = (AndroidElement) driver.findElementByXPath("//*[contains(@text,'ADD TO CART')][1]");
         addToCartBtn.click();
         Utils.hardWait();
+
 //view cart
         AndroidElement viewCartBtn = (AndroidElement) driver.findElementByXPath("//android.view.ViewGroup[@content-desc='test-Cart']/android.view.ViewGroup/android.widget.ImageView");
         viewCartBtn.click();
