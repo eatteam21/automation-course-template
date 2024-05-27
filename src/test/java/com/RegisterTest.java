@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.pages.RegisterPage;
 import com.utils.BasicTest;
 import com.utils.Utils;
 
@@ -14,17 +15,12 @@ public class RegisterTest extends BasicTest {
         String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
+        RegisterPage registerPage = new RegisterPage(driver);
 
-        WebElement emailInput = driver.findElement(By.xpath("//input[@id='reg_email']"));
-        emailInput.sendKeys("abc@gmail.com");
-
-        Utils.hardWait();
-
-        WebElement registerButton = driver.findElement(By.xpath("//button[contains(text(),'Đăng ký')]"));
-        registerButton.click();
-        Utils.hardWait(5000);
-        WebElement errorMessage = driver.findElement(By.xpath("//ul[@class='woocommerce-error']"));
-
+        registerPage.enterRegEmail("abc@gmail.com");
+        registerPage.regButton();
+        
+        WebElement errorMessage = registerPage.errorMessage();
         Assert.assertTrue(errorMessage.isDisplayed());
 
     }
@@ -34,13 +30,19 @@ public class RegisterTest extends BasicTest {
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
-        WebElement passwordInput = driver.findElement(By.xpath("//input[@id='reg_password']"));
-        passwordInput.sendKeys("123");
-        Utils.hardWait();
+        // WebElement passwordInput = driver.findElement(By.xpath("//input[@id='reg_password']"));
+        // passwordInput.sendKeys("123");
+        // Utils.hardWait();
 
-        WebElement errorMessage = driver.findElement(By.xpath("//div[@class='woocommerce-password-strength short']"));
+        // WebElement errorMessage = driver.findElement(By.xpath("//div[@class='woocommerce-password-strength short']"));
 
-        Assert.assertTrue(errorMessage.isDisplayed());
+        // Assert.assertTrue(errorMessage.isDisplayed());
+
+        RegisterPage registerPage = new RegisterPage(driver);
+
+        registerPage.enterRegPassword("aaa");
+        WebElement errorMessagePass = registerPage.errorMessagePass();
+        Assert.assertTrue(errorMessagePass.isDisplayed());
 
 
     }
