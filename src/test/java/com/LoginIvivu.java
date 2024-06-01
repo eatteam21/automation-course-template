@@ -26,5 +26,5 @@ public class LoginIvivu extends BasicTest {
         WebElement usernameCheck = ivivuloginpage.usernameCheck();
         Assert.assertTrue(usernameCheck.isDisplayed());
     }
-
+    
 }
