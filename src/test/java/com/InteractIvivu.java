@@ -22,15 +22,11 @@ public class InteractIvivu extends BasicTest {
         Utils.hardWait();
 
         interactIvivupage.locationInput();
-        Utils.hardWait();
         interactIvivupage.locationClick();
-        Utils.hardWait();
         interactIvivupage.datePicker();
-        Utils.hardWait();
         interactIvivupage.dateElement();
-        Utils.hardWait();
         interactIvivupage.submitClick();
-        Utils.hardWait();
+   
 
         String testURL = "https://www.ivivu.com/khach-san-da-lat";
         Assert.assertEquals(driver.getCurrentUrl(), testURL);
@@ -41,9 +37,8 @@ public class InteractIvivu extends BasicTest {
         driver.switchTo().window(windowHandles.get(1));
         Utils.hardWait();
         interactIvivupage.regRoom();
-        Utils.hardWait();
         interactIvivupage.regRoomOrder();
-        Utils.hardWait();
+
 
         String currentUrl = driver.getCurrentUrl();
         String urlForm = "https://pay.ivivu.com/thanh-toan-v2";

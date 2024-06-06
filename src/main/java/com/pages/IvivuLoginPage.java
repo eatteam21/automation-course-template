@@ -2,6 +2,7 @@ package com.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 public class IvivuLoginPage extends BasePage {
     public IvivuLoginPage(WebDriver givenDriver){
         super(givenDriver);
@@ -13,9 +14,11 @@ public class IvivuLoginPage extends BasePage {
     By usernameClick = By.xpath("//a[@class='dropdown-toggle']//div[@class='img-wrapper']");
     By firstLogin = By.xpath("//ul[@role='menu']//btn[@type='button'][contains(text(),'Đăng nhập')]");
     public void usernameClick(){
+        waitForElementVisible(usernameClick);
         findElementByLocator(usernameClick).click();
     }
     public void enterEmail(String txt){
+        waitForElementVisible(emailInput);
         findElementByLocator(emailInput).clear();
         findElementByLocator(emailInput).sendKeys(txt);
     }
@@ -24,12 +27,14 @@ public class IvivuLoginPage extends BasePage {
         findElementByLocator(passwordInput).sendKeys(txt);
     }
     public void firstLogin(){
+        waitForElementVisible(firstLogin);
         findElementByLocator(firstLogin).click();
     }
     public void clickLogin(){
         findElementByLocator(loginButton).click();
     }
     public WebElement usernameCheck(){
+        waitForElementVisible(usernameCheck);
         return findElementByLocator(usernameCheck);
     }
 }

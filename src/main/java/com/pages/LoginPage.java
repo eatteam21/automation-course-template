@@ -3,6 +3,9 @@ package com.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import io.appium.java_client.functions.ExpectedCondition;
 
 public class LoginPage extends BasePage {
 
@@ -19,11 +22,13 @@ public class LoginPage extends BasePage {
 
 
     public void enterEmail(String txt){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(emailInput));
         findElementByLocator(emailInput).clear();
         findElementByLocator(emailInput).sendKeys(txt);
     }
 
     public void enterPassword(String txt){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(passwordInput));
         findElementByLocator(passwordInput).clear();
         findElementByLocator(passwordInput).sendKeys(txt);
     }
@@ -34,6 +39,9 @@ public class LoginPage extends BasePage {
     }
 
     public WebElement getErrorMessageElement(){
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(errorMessagae));
+
         return findElementByLocator(errorMessagae);
     }
 

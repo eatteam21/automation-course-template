@@ -3,6 +3,7 @@ package com.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
@@ -18,5 +19,13 @@ public class BasePage {
 
     protected WebElement findElementByLocator(By locator) {
         return this.driver.findElement(locator);
+    }
+
+    protected void waitForElementVisible(By locator) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    protected void waitForElementClickable(By locator) {
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 }

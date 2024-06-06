@@ -15,14 +15,13 @@ public class LoginIvivu extends BasicTest {
         String url = "https://www.ivivu.com/";
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
-        Utils.hardWait();
+        
         ivivuloginpage.usernameClick();
         ivivuloginpage.firstLogin();
         ivivuloginpage.enterEmail("tetakok687@lucvu.com");
         ivivuloginpage.enterPassword("$GA@%dMh]U@td7-");
         ivivuloginpage.clickLogin();
         ////span[contains(text(),'tetakok687@lucvucom')]
-        Utils.hardWait();
         WebElement usernameCheck = ivivuloginpage.usernameCheck();
         Assert.assertTrue(usernameCheck.isDisplayed());
     }
