@@ -8,13 +8,13 @@ public class IvivuInteractPage extends BasePage {
         super(givenDriver);
     }
     By locationInput = By.xpath("//input[@id='searchText']");
-    By locationClick = By.xpath("//div[@class='tt-dataset tt-dataset-hots']//div[2]//div[1]//div[1]//div[1]");
-    By datePicker = By.xpath("//td[@data-t-date='1720656000000']");
-    By dateElement = By.xpath("//td[@data-t-date='1721433600000']");
+    By locationClick = By.xpath("//div[@class='media-body media-middle']//h4[@class ='media-heading'][contains(text(),'Đà Lạt')]");
+    By datePicker = By.xpath("//span[@class = 't-day-check-in'][contains(text(),'21')]");
+    By dateElement = By.xpath("(//div[contains(@class,'t-datepicker-day')]//td[contains(text(),'12')])[1]");
     By submitClick = By.xpath("(//button[@ng-click='SearchHotel()'])[2]");
-    By clickLink = By.xpath("/html/body/div[2]/div[2]/div[3]/div[2]/div[2]/div/div[5]/div[1]/a/div[2]/div[2]/div[1]/p[1]");
+    By clickLink = By.xpath("//p[@class = 'name limit-length'][contains(text(),'Khách sạn MerPerle Đà Lạt')]");
     By regRoom = By.xpath("//button[@id='datphongnay']");
-    By regRoomOrder = By.xpath("/html/body/section/section/aside[1]/div[16]/div/div/div/table/tbody[1]/tr[1]/td[4]/div[2]/div/button/b");
+    By regRoomOrder = By.xpath("//tr[@class='room-item ng-scope have-meal best-price']//b[@class='ng-scope'][contains(text(),'Yêu cầu đặt')]");
     public void locationInput(){
          waitForElementVisible(locationInput);
         findElementByLocator(locationInput).click();
