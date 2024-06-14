@@ -48,7 +48,7 @@ public class LoginTest extends BasicTest {
         driver.findElement(By.name("login")).click();
         Utils.hardWait();
 
-        Assert.assertEquals("Địa chỉ email không xác . Kiểm tra lại hoặc thử tên người dùng của bạn.", "Địa chỉ email không xác định. Kiểm tra lại hoặc thử tên người dùng của bạn.");
+        Assert.assertEquals("Địa chỉ email không xác định. Kiểm tra lại hoặc thử tên người dùng của bạn.", "Địa chỉ email không xác định. Kiểm tra lại hoặc thử tên người dùng của bạn.");
     }
 
 }
