@@ -49,6 +49,8 @@ public class LoginTest extends BasicTest {
         Utils.hardWait();
 
         Assert.assertEquals("Địa chỉ email không xác định. Kiểm tra lại hoặc thử tên người dùng của bạn.", "Địa chỉ email không xác định. Kiểm tra lại hoặc thử tên người dùng của bạn.");
+    
     }
+
 
 }
