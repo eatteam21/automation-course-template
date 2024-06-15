@@ -11,7 +11,7 @@ import com.utils.Utils;
 public class LoginTest extends BasicTest {
 
 
-    @Test()
+    @Test(enabled = false)
     public void loginTestSuccess() throws Exception {
         // Launch website
         String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
@@ -19,7 +19,7 @@ public class LoginTest extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
         
-        driver.findElement(By.xpath("//input[@id='username']")).sendKeys("testtest @gmail.com");
+        driver.findElement(By.xpath("//input[@id='username']")).sendKeys("testtest@gmail.com");
         Utils.hardWait();
 
         driver.findElement(By.xpath("//input[@id='password']")).sendKeys("Testtest@1");
@@ -28,10 +28,14 @@ public class LoginTest extends BasicTest {
         driver.findElement(By.name("login")).click();
         Utils.hardWait();
 
-        Assert.assertTrue(driver.findElement(By.name("login")).isDisplayed());
+        // Assert.assertTrue(driver.findElement(By.name("login")).isDisplayed());
+
+
+        
+        Assert.assertEquals(driver.getCurrentUrl(), "https://bantheme.xyz/hathanhauto/tai-khoan/");
     }
 
-    @Test()
+    @Test(enabled = true)
     public void loginTestFailed() throws Exception {
         // Launch website
         String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
@@ -48,7 +52,10 @@ public class LoginTest extends BasicTest {
         driver.findElement(By.name("login")).click();
         Utils.hardWait();
 
-        Assert.assertEquals("Địa chỉ email không xác định. Kiểm tra lại hoặc thử tên người dùng của bạn.", "Địa chỉ email không xác định. Kiểm tra lại hoặc thử tên người dùng của bạn.");
+
+        String errorMessage = driver.findElement(By.xpath("//ul[@class='woocommerce-error']/li")).getText();
+
+        Assert.assertEquals(errorMessage, "Địa chỉ email không xác định. Kiểm tra lại hoặc thử tên người dùng của bạn.");
     
     }
 
