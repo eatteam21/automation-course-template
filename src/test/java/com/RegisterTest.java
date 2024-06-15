@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.mongodb.util.Util;
+import com.pages.RegisterPage;
 import com.utils.BasicTest;
 import com.utils.Utils;
 
@@ -19,14 +20,17 @@ public class RegisterTest extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
 
-        driver.findElement(By.xpath("//button[@name='register']")).click();
-        Utils.hardWait();
+        RegisterPage registerPage = new RegisterPage(driver);
+        registerPage.clickResgister();
 
-        // Assert.assertTrue(driver.findElement(By.name("login")).isDisplayed());
-        String failedMessage = driver.findElement(By.xpath("//ul[@class ='woocommerce-error']/li")).getText();
+        // driver.findElement(By.xpath("//button[@name='register']")).click();
+        // Utils.hardWait();
+
+        // // Assert.assertTrue(driver.findElement(By.name("login")).isDisplayed());
+        // String failedMessage = driver.findElement(By.xpath("//ul[@class ='woocommerce-error']/li")).getText();
 
         
-        Assert.assertEquals(failedMessage, "Lỗi: Vui lòng cung cấp địa chỉ email hợp lệ.");
+        Assert.assertEquals(registerPage.getMessageError(), "Lỗi: Vui lòng cung cấp địa chỉ email hợp lệ.");
     }
 
     @Test(enabled = true)
@@ -36,18 +40,21 @@ public class RegisterTest extends BasicTest {
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
+        RegisterPage registerPage = new RegisterPage(driver);
+        registerPage.inputEmail("minhphat3575@gmail.com");
+        registerPage.clickResgister();
 
-        driver.findElement(By.xpath("//input[@id='reg_email']")).sendKeys("minhphat3575@gmail.com");
-        Utils.hardWait();
+        // driver.findElement(By.xpath("//input[@id='reg_email']")).sendKeys("minhphat3575@gmail.com");
+        // Utils.hardWait();
 
-        driver.findElement(By.xpath("//button[@name='register']")).click();
-        Utils.hardWait();
+        // driver.findElement(By.xpath("//button[@name='register']")).click();
+        // Utils.hardWait();
 
-        // Assert.assertTrue(driver.findElement(By.name("login")).isDisplayed());
-        String failedMessage = driver.findElement(By.xpath("//ul[@class ='woocommerce-error']/li")).getText();
+        // // Assert.assertTrue(driver.findElement(By.name("login")).isDisplayed());
+        // String failedMessage = driver.findElement(By.xpath("//ul[@class ='woocommerce-error']/li")).getText();
 
         
-        Assert.assertEquals(failedMessage, "Lỗi: An account is already registered with your email address. Please log in.");
+        Assert.assertEquals(registerPage.getMessageError(), "Lỗi: An account is already registered with your email address. Please log in.");
     }
 
 
