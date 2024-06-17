@@ -28,7 +28,6 @@ public abstract class BasicTest {
         // System.setProperty("webdriver.chrome.driver", driverPath);
         // driver = new ChromeDriver(options);
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
         options.addArguments("window-size=1920,1080");
         options.addArguments("--no-sanbox");
 
