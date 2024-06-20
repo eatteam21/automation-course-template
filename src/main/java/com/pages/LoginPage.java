@@ -12,7 +12,7 @@ public class LoginPage extends BasePage {
     private By errorText = By.xpath("//ul[@class='woocommerce-error']/li");
     private By emailInput = By.xpath("//input[@id='username']");
     private By passwordInput = By.xpath("//input[@id='password']");
-
+    
     public LoginPage(WebDriver driver) { //constructors
         super(driver); //syntax
     }

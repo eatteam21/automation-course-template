@@ -21,6 +21,8 @@ public class BasePage {
         return this.driver.findElement(locator);
     }
 
+
+
     // protected void waitForElementVisible(By locator) {
     //     wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     // }
