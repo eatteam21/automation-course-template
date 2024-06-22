@@ -22,19 +22,22 @@ public class LoginPageIViVu extends BasePage{
     
 
     public void clickButtonAccount(){
+        waitForElementVisible(buttonLogin);
         findElementByLocator(buttonAccount).click();
-        Utils.hardWait();
+        //Utils.hardWait();
     }
 
     public void clickButtonLogin(){
+        waitForElementVisible(buttonLogin);
         findElementByLocator(buttonLogin).click();
-        Utils.hardWait();
+        //Utils.hardWait();
     }
     
     public void inputEmail(String email){
+        waitForElementVisible(validationMessageEmail);
         findElementByLocator(validationMessageEmail).clear();
         findElementByLocator(validationMessageEmail).sendKeys(email);
-        Utils.hardWait();
+        //Utils.hardWait();
     }
     public String getEmailValidation(){
         return findElementByLocator(validationMessageEmail).getAttribute("validationMessage");
@@ -47,7 +50,9 @@ public class LoginPageIViVu extends BasePage{
 
 
     public void clickLoginButton(){
+        waitForElementVisible(loginButton);
         findElementByLocator(loginButton).click();
-        Utils.hardWait();
+        // findElementByLocator(buttonLogin).click();
+        //Utils.hardWait();
     }
 }

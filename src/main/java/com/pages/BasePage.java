@@ -8,12 +8,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
     protected WebDriver driver;
-    // protected WebDriverWait wait;
+    protected WebDriverWait wait;
 
 
     public BasePage(WebDriver givenDriver) { //constructor
         this.driver = givenDriver;
-        // wait = new WebDriverWait(driver, 10); // explicitwait
+        wait = new WebDriverWait(driver, 10); // explicitwait
     }
 
 
@@ -23,11 +23,11 @@ public class BasePage {
 
 
 
-    // protected void waitForElementVisible(By locator) {
-    //     wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-    // }
+    protected void waitForElementVisible(By locator) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
 
-    // protected void waitForElementClickable(By locator) {
-    //     wait.until(ExpectedConditions.elementToBeClickable(locator));
-    // }
+    protected void waitForElementClickable(By locator) {
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
 }

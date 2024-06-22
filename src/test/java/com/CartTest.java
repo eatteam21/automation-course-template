@@ -48,36 +48,4 @@ public class CartTest extends BasicTest {
  
         
     }
-
-    @Test(enabled = false)
-    public void loginTestFailed() throws Exception {
-        // Launch website
-        String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
-        driver.get(url);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-
-        LoginPage loginPage = new LoginPage(driver);
-        // loginPage.inputEmail("testtesta@gmail.com");
-        // loginPage.inputPass("Testtest@12");
-        // loginPage.clickLogin();
-        loginPage.login("testtesta@gmail.com", "Testtest@12");
-        
-        
-        // driver.findElement(By.xpath("//input[@id='username']")).sendKeys("testtesta@gmail.com");
-        // Utils.hardWait();
-
-        // driver.findElement(By.xpath("//input[@id='password']")).sendKeys("Testtest@12");
-        // Utils.hardWait();
-
-        // driver.findElement(By.name("login")).click();
-        // Utils.hardWait();
-
-
-        // String errorMessage = driver.findElement(By.xpath("//ul[@class='woocommerce-error']/li")).getText();
-
-        Assert.assertEquals(loginPage.getErrorMessage(), "Địa chỉ email không xác định. Kiểm tra lại hoặc thử tên người dùng của bạn.");
-    
-    }
-
-
 }

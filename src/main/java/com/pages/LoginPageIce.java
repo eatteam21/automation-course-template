@@ -6,15 +6,14 @@ import org.openqa.selenium.WebElement;
 
 import com.utils.Utils;
 
-public class LoginPage extends BasePage {
+public class LoginPageIce extends BasePage {
 
-    private By submitButton = By.name("login");
+    private By submitButton = By.name("Log in ");
     private By errorText = By.xpath("//ul[@class='woocommerce-error']/li");
     private By emailInput = By.xpath("//input[@id='username']");
     private By passwordInput = By.xpath("//input[@id='password']");
-    private By hyperlinkAccount = By.xpath("//a[@class='pos-login']");
-    private By hyperlinkBack = By.partialLinkText("Thoát");
-    public LoginPage(WebDriver driver) { //constructors
+    
+    public LoginPageIce(WebDriver driver) { //constructors
         super(driver); //syntax
     }
 
@@ -22,10 +21,6 @@ public class LoginPage extends BasePage {
         waitForElementVisible(submitButton);
         findElementByLocator(submitButton).click();
         // Utils.hardWait();
-    }
-    public boolean displayedLogin() {
-        waitForElementVisible(submitButton);
-        return findElementByLocator(submitButton).isDisplayed();
     }
 
     public void inputEmail(String email) {
@@ -49,15 +44,6 @@ public class LoginPage extends BasePage {
         this.clickLogin();
     }
 
-    public void clickHyperlinkAccount(){
-        waitForElementVisible(hyperlinkAccount);
-        findElementByLocator(hyperlinkAccount).click();
-    }
-
-    public void clickHyperlinkBack(){
-        waitForElementVisible(hyperlinkBack);
-        findElementByLocator(hyperlinkBack).click();
-    }
 
     public String getErrorMessage() {
         return findElementByLocator(errorText).getText();

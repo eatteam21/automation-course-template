@@ -14,7 +14,7 @@ import com.utils.Utils;
 public class LoginTestIViVu extends BasicTest{
    
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void loginTestFailed() throws Exception {
         // Launch website
         String url = "https://www.ivivu.com/";
@@ -34,7 +34,7 @@ public class LoginTestIViVu extends BasicTest{
 
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void loginTestFailed2() throws Exception {
         // Launch website
         String url = "https://www.ivivu.com/";

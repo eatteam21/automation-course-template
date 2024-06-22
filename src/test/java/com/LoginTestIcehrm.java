@@ -6,39 +6,39 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.mongodb.util.Util;
-import com.pages.LoginPage;
+import com.pages.LoginPageIce;
 import com.utils.BasicTest;
 import com.utils.Utils;
 
-public class LoginTest extends BasicTest {
+public class LoginTestIcehrm extends BasicTest {
 
 
     @DataProvider(name = "testdata")
     public Object[][] testData() {
         Object[][] testDataFeed = new Object[4][2];  //4 row, 2 column
-        testDataFeed[0][0] = "tetakok687@lucvu.com";
-        testDataFeed[0][1] = ":KqCCNjmmy6wZ;>";
-        testDataFeed[1][0] = "tetakok6871@lucvu.com";
-        testDataFeed[1][1] = "tetakok687com";
-        testDataFeed[2][0] = "tetakok688@lucvu.com";
-        testDataFeed[2][1] = "tetakok687@lucvu.com";
-        testDataFeed[3][0] = "tetakok681@lucvu.com";
-        testDataFeed[3][1] = "tetakok687";
+        testDataFeed[0][0] = "admin";
+        testDataFeed[0][1] = "admin>";
+        testDataFeed[1][0] = "manager";
+        testDataFeed[1][1] = "demouserpwd";
+        testDataFeed[2][0] = "user1";
+        testDataFeed[2][1] = "demouserpwd";
+        testDataFeed[3][0] = "user2";
+        testDataFeed[3][1] = "demouserpwd";
 
         return testDataFeed;
 
     }
 
 
-    @Test(enabled = false, dataProvider = "testdata")
+    @Test(enabled = true, dataProvider = "testdata")
     public void loginTestSuccess(String username, String password) throws Exception {
         // Launch website
-        String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
+        String url = "https://icehrm-open.gamonoid.com/login.php#";
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
 
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPageIce loginPage = new LoginPageIce(driver);
         // loginPage.inputEmail("testtest@gmail.com");
         // loginPage.inputPass("Testtest@1");
         loginPage.inputEmail(username);
@@ -90,21 +90,5 @@ public class LoginTest extends BasicTest {
     
     // }
 
-    @Test(enabled = true)
-    public void loginTestFailed() throws Exception {
-        // Launch website
-        String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
-        driver.get(url);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
 
-        LoginPage loginPage = new LoginPage(driver);
-        // loginPage.inputEmail("testtesta@gmail.com");
-        // loginPage.inputPass("Testtest@12");
-        // loginPage.clickLogin();
-        loginPage.login("testtest@gmail.com", "Testtest@1");
-        loginPage.clickHyperlinkAccount();
-        loginPage.clickHyperlinkBack();
-        Assert.assertTrue(loginPage.displayedLogin());
-    
-    }
 }

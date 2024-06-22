@@ -21,24 +21,30 @@ public class CartPage extends BasePage{
     }
 
     public void searchInput(String search){
+        waitForElementVisible(inputSearch);
         findElementByLocator(inputSearch).clear();
         findElementByLocator(inputSearch).sendKeys(search);
-         Utils.hardWait();
+         //Utils.hardWait();
     }
 
     public void searchFind(){
+        waitForElementVisible(findSearch);
+        waitForElementClickable(findSearch);
         findElementByLocator(findSearch).click();
-        Utils.hardWait();
+        //Utils.hardWait();
     }
 
     public void clickAdd(){
+        waitForElementVisible(buttonAdd);
+        waitForElementClickable(buttonAdd);
         findElementByLocator(buttonAdd).click();
-        Utils.hardWait();
+        //Utils.hardWait();
     }
 
-    public void clickPay(){
+    public void clickPay(){waitForElementVisible(buttonPay);
+        waitForElementClickable(buttonPay);
         findElementByLocator(buttonPay).click();
-        Utils.hardWait();
+        //Utils.hardWait();
     }
 
     public String tittleProduct(){
