@@ -19,7 +19,7 @@
         <extentreports.version>4.0.8</extentreports.version>
         <extentreports.adapter.version>1.0.3</extentreports.adapter.version>
         <lombok.version>1.18.22</lombok.version>
-        <webdrivermanager.version>4.2.0</webdrivermanager.version>
+        <webdrivermanager.version>5.8.0</webdrivermanager.version>
         <log4j.version>2.17.2</log4j.version>
         <allure.version>2.14.0</allure.version>
         <allure.maven.version>2.10.0</allure.maven.version>
@@ -122,8 +122,8 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-          <!--  <version>${webdrivermanager.version}</version> -->
-			<version>5.5.3</version>
+            <version>${webdrivermanager.version}</version>
+<!--			<version>5.8.0</version>-->
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
