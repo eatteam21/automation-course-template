@@ -21,12 +21,12 @@ public abstract class BasicTest {
     public void preCondition() {
         // Chromedriver path
         // driverPath = "src/main/resources/WebDrivers/chromedriver.exe";
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
+        // ChromeOptions options = new ChromeOptions();
+        // options.addArguments("--headless");
         // System.setProperty("webdriver.chrome.driver", driverPath);
         // driver = new ChromeDriver(options);
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver();
         // Maximize the browser
         driver.manage().window().maximize();
         //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
