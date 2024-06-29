@@ -31,11 +31,13 @@ public class FilterTiki extends BasicTest{
         WebElement allFilter = tikiFilterPage.allFilter(); // hien thi tat ca bo loc
         Assert.assertTrue(allFilter.isDisplayed());
 
-        tikiFilterPage.topDealButton();
-        tikiFilterPage.supplierButton();
-
+        tikiFilterPage.fillter("Ưu đãi","Siêu rẻ");
+        tikiFilterPage.fillter_2("Nhà cung cấp","Tiki Trading");
+        tikiFilterPage.fillterPrice("Từ","1000000");
+        tikiFilterPage.fillterPrice("Đến","2000000");
+        tikiFilterPage.CloseButton();
+        WebElement topDealLabel = tikiFilterPage.topDealLabel();
+        Assert.assertTrue(topDealLabel.isDisplayed());
     }
-
-
 }
     
