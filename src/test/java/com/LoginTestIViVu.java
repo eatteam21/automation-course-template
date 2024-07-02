@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import com.mongodb.util.Util;
 import com.pages.LoginPage;
-import com.pages.LoginPageIViVu;
+import com.pages.IviVu.LoginPageIViVu;
 import com.utils.BasicTest;
 import com.utils.Utils;
 

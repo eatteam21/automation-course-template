@@ -1,9 +1,10 @@
-package com.pages;
+package com.pages.IviVu;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.pages.BasePage;
 import com.utils.Utils;
 
 public class LoginPageIViVu extends BasePage{

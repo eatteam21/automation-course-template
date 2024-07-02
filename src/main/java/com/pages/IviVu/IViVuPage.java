@@ -1,4 +1,4 @@
-package com.pages;
+package com.pages.IviVu;
 
 import java.util.ArrayList;
 
@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.pages.BasePage;
 import com.utils.Utils;
 
 public class IViVuPage extends BasePage{
@@ -19,8 +20,8 @@ public class IViVuPage extends BasePage{
     private By clickDateCheckout = By.xpath("//div[@class='t-dates col-xs-12 v_field t-date-check-out']");
     //private By clickDateOfDepartment = By.xpath("//div[@class='col-xs-6 no-padding check-in  t-check-in']");
     private By clickRoom = By.xpath("//div[@class='col-xs-12 v_field']");
-    private By clickIncrease = By.xpath("//div[@class='col-xs-12 room-popover__item']/div[2]/div/span[2]/span[1]");
-    private By buttonFind = By.xpath("//button[@ng-click='SearchHotel()']");
+    private By clickIncrease = By.xpath("//span[@ng-click=\"PlusOrMinusObject('room','+',1,RoomConfig.length)\"]");
+    private By buttonFind = By.xpath("(//button[@ng-click='SearchHotel()'])[2]");
     private By numberChild = By.xpath("//div[@class='col-xs-12 room-popover__item deline'][2]//*[@class='quantity ng-binding']");
     private By addChildBtn = By.xpath("//div[@class='col-xs-12 room-popover__item deline'][2]//*[contains(@ng-click,'+')]//span");
    
@@ -71,7 +72,7 @@ public class IViVuPage extends BasePage{
         // }
         
         //waitForElementClickable(clickIncrease);
-        for (int i = 0; i < numberOfClicks; i++) {
+        for (int i = 1; i < numberOfClicks; i++) {
             try {
                 
                 findElementByLocator(clickIncrease).click();
@@ -87,14 +88,15 @@ public class IViVuPage extends BasePage{
 
 
     public void clickFind(){
-        waitForElementVisible(buttonFind);
-        findElementByLocator(buttonFind).click();
+        waitForElementClickable(buttonFind);
+        WebElement x = findElementByLocator(buttonFind);
+        x.click();
         // findElementByLocator(buttonLogin).click();
         //Utils.hardWait();
     }
 
     public void chooseHotel(String name){
-        String locator = "//*[contains(text(),'"+ name +"')]";
+        String locator =  "//div[@class='hotel-item']//*[contains(text(), '"+ name +"')]";
         By element = By.xpath(locator);
         findElementByLocator(element).click();
         ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
