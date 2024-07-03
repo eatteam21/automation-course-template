@@ -11,6 +11,7 @@ import com.pages.IviVu.BookRoomPage;
 import com.pages.IviVu.FindPage;
 import com.pages.IviVu.IViVuPage;
 import com.pages.IviVu.LoginPageIViVu;
+import com.pages.IviVu.PaymentPage;
 import com.utils.BasicTest;
 import com.utils.Utils;
 
@@ -27,6 +28,7 @@ public class TestIViVu extends BasicTest{
         IViVuPage pageIViVu = new IViVuPage(driver);
         FindPage pageFind = new FindPage(driver);
         BookRoomPage pageBookRoom = new BookRoomPage(driver);
+        PaymentPage paymentPage = new PaymentPage(driver);
         pageIViVu.searchText();
         pageIViVu.chooseLocation("Đà Lạt");
         // pageIViVu.clickDateChecking();
@@ -38,5 +40,6 @@ public class TestIViVu extends BasicTest{
         // pageFind.openNewTab();
         pageBookRoom.clickBookNow();
         pageBookRoom.bookingRoom();
+        paymentPage.fillFullName("Nguyen Huynh Minh Phat");
     }
 }
