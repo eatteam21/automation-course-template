@@ -14,7 +14,7 @@ import com.pages.BasePage;
 import com.utils.Utils;
 
 public class BookRoomPage extends BasePage{
-     WebDriver webdriver = new ChromeDriver();
+     
     //private By chooseHotel = By.xpath("//div[@ng-hide='(!availableNo_897417 || availableNo_897417==0) && GetOnlyAL']");
     private By btnBookNow = By.xpath("//button[@id='datphongnay']");
     private By btnReservationRequired = By.xpath("(//button[@ng-disabled='!LoadingFinish ||(limitBuget && mealType.PriceAvgPlusTA > limitBuget)'])[1]");
@@ -32,8 +32,8 @@ public class BookRoomPage extends BasePage{
     
     public void bookingRoom(){
         waitForElementVisible(btnReservationRequired); 
-        WebElement element = driver.findElement(btnReservationRequired);
-        Utils.scrollToElement(element,driver);
+       // WebElement element = driver.findElement(btnReservationRequired);
+       // Utils.scrollToElement(element,driver);
         findElementByLocator(btnReservationRequired).click();
     }
 }

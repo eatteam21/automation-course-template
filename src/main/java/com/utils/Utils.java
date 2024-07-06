@@ -40,10 +40,14 @@ public class Utils extends BasePage{
         DriverManager.getDriver().switchTo().window(tabs.get(1));
     }
 
-    public static void scrollToElement(WebElement webElement, WebDriver driver) {
-        WebDriver y = DriverManager.getDriver();       
-        ((JavascriptExecutor) DriverManager.getDriver()).executeScript("arguments[0].scrollIntoView(true);", webElement);
-        System.out.println(y);
+    public static void scrollToElement(WebElement element, WebDriver driver) {
+        if (element == null) {
+            throw new IllegalArgumentException("Element to scroll to cannot be null");
+        }
+        if (driver == null) {
+            throw new IllegalArgumentException("WebDriver instance cannot be null");
+        }
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         hardWait(500);
     }
 }

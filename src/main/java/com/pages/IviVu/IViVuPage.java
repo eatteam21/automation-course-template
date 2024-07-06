@@ -44,7 +44,6 @@ public class IViVuPage extends BasePage{
         String Locator = "//h4[contains(text(),'"+ location +"')]";
         By element = By.xpath(Locator);
         findElementByLocator(element).click();
-        System.out.println("0000000000000");
         Utils.hardWait();
     }
 

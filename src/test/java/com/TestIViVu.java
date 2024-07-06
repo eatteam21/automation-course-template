@@ -40,6 +40,8 @@ public class TestIViVu extends BasicTest{
         // pageFind.openNewTab();
         pageBookRoom.clickBookNow();
         pageBookRoom.bookingRoom();
+        Utils.hardWait();
         paymentPage.fillFullName("Nguyen Huynh Minh Phat");
+        Utils.hardWait();
     }
 }

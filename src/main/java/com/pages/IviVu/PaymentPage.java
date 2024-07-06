@@ -23,8 +23,7 @@ public class PaymentPage extends BasePage{
     
     public void fillFullName(String fullname){
         waitForElementVisible(inputFullName);
-        findElementByLocator(inputFullName).clear();
-        findElementByLocator(inputFullName);
+        findElementByLocator(inputFullName).sendKeys(fullname);;
         System.out.println("Full name: " + fullname);
     }
 
