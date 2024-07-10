@@ -31,8 +31,7 @@ public class FindPage extends BasePage{
         
         openNewTab();
         Utils.hardWait();
-        
-        
+
     }
 
     public void openNewTab(){

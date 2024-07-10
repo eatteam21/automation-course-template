@@ -1,4 +1,4 @@
-package com;
+package com.IVivu;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -45,3 +45,4 @@ public class TestIViVu extends BasicTest{
         Utils.hardWait();
     }
 }
+
