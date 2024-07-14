@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -15,6 +16,8 @@ public abstract class BasicTest {
     
     public static final Logger logger = LogManager.getLogger();
     protected static WebDriver driver;
+    protected static WebDriverWait wait;
+
     // private String driverPath;
 
     @BeforeMethod
@@ -29,6 +32,8 @@ public abstract class BasicTest {
         // Maximize the browser
         driver.manage().window().maximize();
         //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        wait = new WebDriverWait(driver, 30);
+
     }
 
     @AfterMethod

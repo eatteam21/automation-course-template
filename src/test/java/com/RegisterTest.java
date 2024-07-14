@@ -3,8 +3,11 @@ package com;
 import com.utils.BasicTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.RegisterPage;
 
 public class RegisterTest extends BasicTest {
     String username="linh3@gmail.com";
@@ -18,17 +21,12 @@ public class RegisterTest extends BasicTest {
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
-        // Enter username
-        // find element
-        driver.findElement(By.xpath("//input[@id='reg_email']")).sendKeys(invalidUsername);
-        // Enter password
+        RegisterPage registerPage = new RegisterPage(driver);
 
-        driver.findElement(By.xpath("//input[@id='reg_password']")).sendKeys(password);
-        // Click login
-        driver.findElement(By.xpath("//button[contains(text(),'Đăng ký')]")).click();
-
+        registerPage.enterRegEmail(invalidUsername);
+        registerPage.enterRegPassword(password);
         // Assertion
-        String errorText=driver.findElement(By.className("woocommerce-error")).getText();
+        String errorText=registerPage.getErrorMessage();
         String expectedError="Lỗi: Vui lòng cung cấp địa chỉ email hợp lệ.";
         Assert.assertEquals(errorText,expectedError);
     }
@@ -38,17 +36,17 @@ public class RegisterTest extends BasicTest {
         String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
+        RegisterPage registerPage = new RegisterPage(driver);
 
-        // Enter username
-        // find element
-        driver.findElement(By.xpath("//input[@id='reg_email']")).sendKeys(username);
-        // Enter password
+        registerPage.enterRegEmail(username);
+        registerPage.enterRegPassword(invalidPassword);
+        registerPage.clickRegister();
 
-        driver.findElement(By.xpath("//input[@id='reg_password']")).sendKeys(invalidPassword);
-        driver.findElement(By.xpath("//html")).click();
-        Thread.sleep(10000);
 
-        Boolean errorIsDisplay = driver.findElement(By.xpath("//div[contains(text(),'Vui lòng nhập mật khẩu khó hơn')]")).isDisplayed();
+//        Thread.sleep(10000);
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Vui lòng nhập mật khẩu khó hơn')]")));
+
+        Boolean errorIsDisplay = registerPage.passErrorMessage();
 
         Assert.assertTrue(errorIsDisplay);
     }

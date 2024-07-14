@@ -6,6 +6,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.utils.BasicTest;
+import pages.HomePage;
+import pages.LoginPage;
 
 public class LoginTest extends BasicTest {
     String username="linh@gmail.com";
@@ -19,19 +21,12 @@ public class LoginTest extends BasicTest {
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
-        // Enter username
-        // find element
-        driver.findElement(By.xpath("//input[@id='username']")).sendKeys(username);
-        // Enter password
-
-        driver.findElement(By.xpath("//input[@id='password']")).sendKeys(password);
-        // Click login
-        driver.findElement(By.xpath("//button[contains(text(),'Đăng nhập')]")).click();
-
-
-        // Assertion
-        Boolean display = driver.findElement(By.xpath("//p[contains(text(),'Từ trang quản lý tài khoản bạn có thể xem')]")).isDisplayed();
-
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        loginPage.enterEmail(username);
+        loginPage.enterPassword(password);
+        loginPage.clickLogin();
+        Boolean display = homePage.isTrangQLDisplayed();
         Assert.assertTrue(display);
     }
     @Test()
@@ -41,18 +36,16 @@ public class LoginTest extends BasicTest {
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
-        // Enter username
-        // find element
-        driver.findElement(By.xpath("//input[@id='username']")).sendKeys(invalidUsername);
-        // Enter password
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
 
-        driver.findElement(By.xpath("//input[@id='password']")).sendKeys(password);
+        loginPage.enterEmail(invalidUsername);
+        loginPage.enterPassword(password);
         // Click login
-        driver.findElement(By.xpath("//button[contains(text(),'Đăng nhập')]")).click();
-
-        Boolean errorIsDisplay = driver.findElement(By.xpath("//li[contains(text(),'Địa chỉ email không xác định. Kiểm tra lại hoặc thử tên người dùng của bạn.')]")).isDisplayed();
-
-        Assert.assertTrue(errorIsDisplay);
+        loginPage.clickLogin();
+        String expectedError="Địa chỉ email không xác định. Kiểm tra lại hoặc thử tên người dùng của bạn.";
+        String actualError=loginPage.getErrorMessage();
+        Assert.assertEquals(actualError,expectedError);
     }
 
     @Test()
@@ -62,20 +55,18 @@ public class LoginTest extends BasicTest {
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
-        // Enter username
-        // find element
-        driver.findElement(By.xpath("//input[@id='username']")).sendKeys(username);
-        // Enter password
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
 
-        driver.findElement(By.xpath("//input[@id='password']")).sendKeys(invalidPassword);
-        // Click login
-        driver.findElement(By.xpath("//button[contains(text(),'Đăng nhập')]")).click();
+        loginPage.enterEmail(username);
+        loginPage.enterPassword(invalidPassword);
+        loginPage.clickLogin();
 
-        String errorText=driver.findElement(By.className("woocommerce-error")).getText();
+        String actualError=loginPage.getErrorMessage();
 
         String expectedError="Lỗi: Mật khẩu bạn nhập cho địa chỉ email "+username+" không đúng. Bạn quên mật khẩu?";
 
-        Assert.assertEquals(errorText,expectedError);
+        Assert.assertEquals(actualError,expectedError);
 
     }
 
