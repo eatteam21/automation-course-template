@@ -1,9 +1,6 @@
 package com;
 
 import com.utils.BasicTest;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.Select;
-import org.springframework.ui.context.Theme;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -51,7 +48,6 @@ public class AddToCartTest extends BasicTest {
         String successMessage="đã được thêm vào giỏ hàng";
         Assert.assertTrue(message.contains(product_title));
         Assert.assertTrue(message.contains(successMessage));
-        Thread.sleep(5000);
         paymentPage.isTotalCorrect();
     }
 
