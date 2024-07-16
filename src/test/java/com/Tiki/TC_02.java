@@ -34,9 +34,40 @@ public class TC_02 extends BasicTest{
         Assert.assertTrue(tc_02Page.textBreadcrumbIsDisplayed());
         Assert.assertTrue(tc_02Page.allBtnIsDisplayed());
         tc_02Page.allBtn();
-        tc_02Page.chooseAllFilter("Siêu rẻ");
-        tc_02Page.chooseSupplier("Tiki Trading");
+        tc_02Page.chooseAllFilter("Siêu rẻ");  
+        tc_02Page.clickSeeMore();
+        tc_02Page.chooseSupplier("Công ty Kỷ Nguyên");
+        tc_02Page.choosePriceStart("1000000");
+        tc_02Page.choosePriceEnd("2000000");
+        tc_02Page.clickCheckResult("Xem kết quả");
+        Assert.assertTrue(tc_02Page.checkboxIsDisplay("Siêu rẻ"),"The checkbox is not checked.");
         
+        try {
+            Boolean result = tc_02Page.checkProductName("Lò Vi Sóng");
+            Assert.assertTrue(result);  
+        } catch (NoSuchElementException e) {
+            System.out.println(e.getMessage());
+    
+        }
+        try {
+            Boolean result = tc_02Page.verifyAllPricesInRange(1000000,2000000);
+            Assert.assertTrue(result, "Not the range you choose");  
+        } catch (NoSuchElementException e) {
+            System.out.println(e.getMessage());
+    
+        }
+        try {
+            Boolean result = tc_02Page.verifyHighLight();
+            Assert.assertTrue(result, "No highlight found");
+        } catch (NoSuchElementException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            Boolean result = tc_02Page.verifyTopDeal();
+            Assert.assertFalse(result, "No Top Deal displayed");
+        } catch (NoSuchElementException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     

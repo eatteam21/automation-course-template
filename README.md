@@ -6,7 +6,7 @@
 ```
 mvn clean test -Dtest=com.LoginTest
 
-mvn clean test -Dtest=com.Tiki.Loadedinformation
+mvn clean test -Dtest=com.Tiki.TC_01
 
 ```
 

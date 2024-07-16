@@ -47,29 +47,32 @@ public class TC_01Page extends BasePage {
         return findElementByLocator(textBreadcrumb).isDisplayed();
     }
 
-    public void findPhoneByName(String name) {
+    public String findPhoneByName(String name) {
         waitForElementVisible(gridProduct);
-
+    
         // Tìm tất cả sản phẩm trong lưới
         List<WebElement> products = driver.findElements(gridProduct);
-
+    
         // Lặp qua từng sản phẩm và so sánh tên (không phân biệt chữ hoa chữ thường)
         for (WebElement product : products) {
-            String productName = product.findElement(By.tagName("h3")).getText(); // Điều chỉnh selector nếu cần
-            if (name.equalsIgnoreCase(productName)) {
-                product.click();
-                System.out.println("Tên: " + name);
-                Utils.hardWait();
-                return; // Thoát vòng lặp sau khi tìm thấy sản phẩm phù hợp
+            WebElement nameElement = product.findElement(By.tagName("h3")); // Điều chỉnh selector nếu cần
+            if (nameElement != null) {
+                String productName = nameElement.getText();
+                if (name.equalsIgnoreCase(productName)) {
+                    product.click();
+                    System.out.println("Tên: " + name);
+                    Utils.hardWait();
+                    return name; // Trả về tên sản phẩm sau khi tìm thấy sản phẩm phù hợp
+                }
             }
         }
-
-        // Nếu không tìm thấy sản phẩm, ném ngoại lệ hoặc xử lý phù hợp
-        throw new NoSuchElementException("Phone with name '" + name + "' not found");
+    
+        // Nếu không tìm thấy sản phẩm, trả về thông báo lỗi
+        return "Phone with name '" + name + "' not found";
     }
-
-    public void Phone(String name) {
-        findPhoneByName(name);
+    
+    public String Phone(String name) {
+        return findPhoneByName(name);
     }
 
     public String nameOfProduct() {

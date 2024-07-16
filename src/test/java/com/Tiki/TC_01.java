@@ -32,12 +32,20 @@ public class TC_01 extends BasicTest{
         
         logger.info("4. Verify the selected item is displayed correctly in details");
         try {
-            tikiPage.Phone("iPhone 15 Plus");
+            String name = tikiPage.Phone("iPhone 15 Plus");
             String productName = tikiPage.nameOfProduct();
             System.out.println("Tên sản phẩm đã chọn: " + productName);
+            //Assert.assertFalse("Apple iPhone 15 Plus".contains("iPhone 15 Plus"), "Actual text does not contain expected text");
+            Assert.assertTrue(productName.endsWith(name),"Product name does not end with the expected suffix" );
+            
+            
         } catch (NoSuchElementException e) {
             System.out.println(e.getMessage());
+            
         }
+
+        
+        
         
     }
 
