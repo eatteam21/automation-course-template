@@ -1,19 +1,20 @@
-package com.pages;
+package com.pages.Icehrm;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.pages.BasePage;
 import com.utils.Utils;
 
-public class LoginPageIce extends BasePage {
+public class TC_001 extends BasePage {
 
-    private By submitButton = By.name("Log in ");
+    private By submitButton = By.xpath("//button[@onclick='submitLogin();return false;']");
     private By errorText = By.xpath("//ul[@class='woocommerce-error']/li");
     private By emailInput = By.xpath("//input[@id='username']");
     private By passwordInput = By.xpath("//input[@id='password']");
     
-    public LoginPageIce(WebDriver driver) { //constructors
+    public TC_001(WebDriver driver) { //constructors
         super(driver); //syntax
     }
 

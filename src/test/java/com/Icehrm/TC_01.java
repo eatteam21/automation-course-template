@@ -1,4 +1,4 @@
-package com;
+package com.Icehrm;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -6,11 +6,11 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.mongodb.util.Util;
-import com.pages.LoginPageIce;
+import com.pages.Icehrm.TC_001;
 import com.utils.BasicTest;
 import com.utils.Utils;
 
-public class LoginTestIcehrm extends BasicTest {
+public class TC_01 extends BasicTest {
 
 
     @DataProvider(name = "testdata")
@@ -38,7 +38,7 @@ public class LoginTestIcehrm extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
 
-        LoginPageIce loginPage = new LoginPageIce(driver);
+        TC_001 loginPage = new TC_001(driver);
         // loginPage.inputEmail("testtest@gmail.com");
         // loginPage.inputPass("Testtest@1");
         loginPage.inputEmail(username);
