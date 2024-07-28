@@ -64,8 +64,9 @@ jobs:
           sudo apt-get --only-upgrade install google-chrome-stable
         
 
-      - name: Run tests on LambdaTest
+      - name: Run Selenium Tests on LambdaTest
+        env:
+            LT_USERNAME: 'linhbap2911'
+            LT_ACCESS_KEY: 'XgH3dlUR8AtaRl3VjzYeG64L2fPAvcDk2hV8XcGb5Nh2VFFKZw'
         run: |
-          export LT_USERNAME=linhbap2911
-          export LT_ACCESS_KEY=XgH3dlUR8AtaRl3VjzYeG64L2fPAvcDk2hV8XcGb5Nh2VFFKZw
-          mvn clean test -Dtest=com.LoginTest
+            mvn clean test -Dtest=com.LoginTest
