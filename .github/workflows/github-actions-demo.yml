@@ -69,7 +69,7 @@ jobs:
             LT_USERNAME: 'linhbap2911'
             LT_ACCESS_KEY: 'XgH3dlUR8AtaRl3VjzYeG64L2fPAvcDk2hV8XcGb5Nh2VFFKZw'
         run: |
-            mvn clean test -Dtest=com.LoginTest
+            mvn clean test -Dtest=com.SigninTest
       - uses: actions/upload-artifact@v3
         with:
           name: testng-report-${{ github.run_number }}
