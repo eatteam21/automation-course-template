@@ -7,11 +7,15 @@ import org.testng.annotations.Test;
 import com.utils.BasicTest;
 import com.utils.Utils;
 
-public class LoginTest extends BasicTest {
+public class RegisterTest extends BasicTest {
 
+
+    //register emmpty username
+
+    // register empty password
 
     @Test()
-    public void loginTestFailed() throws Exception {
+    public void TC01_registerTestEmpltyUsername() throws Exception {
         // Launch website
         String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
         driver.get(url);
@@ -20,13 +24,13 @@ public class LoginTest extends BasicTest {
 
 
         // Enter username
-        driver.findElement(By.xpath("//input[@id='username']")).sendKeys("testtest@gmail.com");
+        driver.findElement(By.xpath("//input[@id='reg_email']")).sendKeys("");
 
         // Enter password
-        driver.findElement(By.xpath("//input[@id='password']")).sendKeys("testtest");
+        driver.findElement(By.xpath("//input[@id='reg_password']")).sendKeys("Testtest123456@");
 
         // Click login
-        driver.findElement(By.xpath("//button[@name=\"login\"]")).click();
+        driver.findElement(By.xpath("//button[@name='register']")).click();
         Utils.hardWait();
 
 
@@ -34,14 +38,13 @@ public class LoginTest extends BasicTest {
         String errorMessage = driver.findElement(By.xpath("//ul[@class='woocommerce-error']")).getText();
 
 
-        Assert.assertEquals(errorMessage, "Lỗi: Mật khẩu bạn nhập cho địa chỉ email testtest@gmail.com không đúng. Bạn quên mật khẩu?");
+        Assert.assertEquals(errorMessage, "Lỗi: Vui lòng cung cấp địa chỉ email hợp lệ.");
         Utils.hardWait();
 
     }
 
-
     @Test()
-    public void loginTestFailedEmptyUser() throws Exception {
+    public void TC02_registerTestEmpltyPassword() throws Exception {
         // Launch website
         String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
         driver.get(url);
@@ -50,14 +53,13 @@ public class LoginTest extends BasicTest {
 
 
         // Enter username
-        driver.findElement(By.xpath("//input[@id='username']")).sendKeys("");
+        driver.findElement(By.xpath("//input[@id='reg_email']")).sendKeys("testtest1@gmail.com");
 
         // Enter password
-        driver.findElement(By.xpath("//input[@id='password']")).sendKeys("testtest");
+        driver.findElement(By.xpath("//input[@id='reg_password']")).sendKeys("");
 
         // Click login
-        driver.findElement(By.xpath("//button[@name=\"login\"]")).click();
-        
+        driver.findElement(By.xpath("//button[@name='register']")).click();
         Utils.hardWait();
 
 
@@ -65,20 +67,11 @@ public class LoginTest extends BasicTest {
         String errorMessage = driver.findElement(By.xpath("//ul[@class='woocommerce-error']")).getText();
 
 
-        Assert.assertEquals(errorMessage, "Lỗi: Yêu cầu tên tài khoản.");
+        Assert.assertEquals(errorMessage, "Lỗi: Vui lòng nhập mật khẩu tài khoản.");
         Utils.hardWait();
-
-
-
-        // Boolean display = driver.findElement(By.xpath("//button[@name=\"login\"]")).isDisplayed();
-
-        // Assert.assertTrue(display);
-
-        // BookingTest
-
     }
 
 
-    //loginTestSuccess
+    
 
 }
