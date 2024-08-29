@@ -6,7 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.mongodb.util.Util;
-import com.pages.Icehrm.TC_001;
+import com.pages.Icehrm.TC_001Page;
 import com.utils.BasicTest;
 import com.utils.Utils;
 
@@ -38,7 +38,7 @@ public class TC_01 extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
 
-        TC_001 loginPage = new TC_001(driver);
+        TC_001Page loginPage = new TC_001Page(driver);
         // loginPage.inputEmail("testtest@gmail.com");
         // loginPage.inputPass("Testtest@1");
         loginPage.inputEmail(username);

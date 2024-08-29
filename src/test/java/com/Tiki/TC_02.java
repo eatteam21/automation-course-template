@@ -64,7 +64,7 @@ public class TC_02 extends BasicTest{
         }
         try {
             Boolean result = tc_02Page.verifyTopDeal();
-            Assert.assertFalse(result, "No Top Deal displayed");
+            Assert.assertTrue(result, "No Top Deal displayed");
         } catch (NoSuchElementException e) {
             System.out.println(e.getMessage());
         }

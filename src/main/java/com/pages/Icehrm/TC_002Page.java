@@ -4,11 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import com.pages.BasePage;
 import com.utils.Utils;
 
-public class TC_002 extends BasePage {
+public class TC_002Page extends BasePage {
 
     private By clickEmployees = By.xpath("//ul[@id='admin_Employees']");
     private By btnAddNew = By.xpath("//button[@class='ant-btn ant-btn-primary']");
@@ -18,7 +19,7 @@ public class TC_002 extends BasePage {
     private By lastNameIpt = By.xpath("//input[@id='last_name']");
     private By nationalityIpt = By.xpath("(//input[@class='ant-select-selection-search-input'])[1]");
     private By DateofBirthIpt = By.xpath("//input[@id='birthday']");
-    private By genderIpt = By.xpath("(//input[@class='ant-select-selection-search-input'])[2]");
+    private By genderIpt = By.xpath("//input[@id='rc_select_1']");//(//input[@class='ant-select-selection-search-input'])[2]
     private By maritalStatusIpt = By.xpath("(//input[@class='ant-select-selection-search-input'])[3]");
     private By ethnicityIpt = By.xpath("(//input[@class='ant-select-selection-search-input'])[4]"); 
     private By ImmigrationStatuIpt = By.xpath("(//input[@class='ant-select-selection-search-input'])[5]"); 
@@ -30,7 +31,7 @@ public class TC_002 extends BasePage {
     private By nextBtn = By.xpath("(//button[@class='ant-btn ant-btn-primary'])[2]");
     private By saveBtn = By.xpath("(//button[@class='ant-btn ant-btn-primary'])[3]");
     
-    public TC_002(WebDriver driver) { //constructors
+    public TC_002Page(WebDriver driver) { //constructors
         super(driver); //syntax
     }
 
@@ -70,27 +71,57 @@ public class TC_002 extends BasePage {
 
     public void addNationnality(String name){
         waitForElementVisible(nationalityIpt);
-        findElementByLocator(nationalityIpt).sendKeys(name, Keys.ENTER);
+        Utils.hardWait();
+        findElementByLocator(nationalityIpt).click();
+        Utils.hardWait();
+        String locator = "//div[@class='rc-virtual-list']//div[@title='Vietnamese']";
+        By element = By.xpath(locator);
+        findElementByLocator(nationalityIpt).sendKeys(name);
+        Utils.hardWait();
+        findElementByLocator(element).click();
+        // WebElement inputElement = findElementByLocator(nationalityIpt);
+        // // findElementByLocator(nationalityIpt).sendKeys(name);
+        // // findElementByLocator(nationalityIpt).sendKeys(Keys.ENTER);
+        // Actions actions = new Actions(driver);
+        // actions.click(findElementByLocator(nationalityIpt))
+        //        .sendKeys(name)
+        //        .click(element)
+        //        .build()
+        //        .perform();
         
     }
 
     public void addDateOfBirth(String name){
         waitForElementVisible(DateofBirthIpt);
-        findElementByLocator(DateofBirthIpt);
-        // String locator = String locator = "//*[contains(text(),'" + monthYear + "')]/../../..//*[contains(text(),'" + day + "')]";
-        // By element = By.xpath(locator);
-        // waitForElementVisible(element);
-        findElementByLocator(DateofBirthIpt).sendKeys(name);;
+        findElementByLocator(DateofBirthIpt).sendKeys(name);
+        String locator = "//table[@class='ant-picker-content']";
+        By element = By.xpath(locator);
+        waitForElementVisible(element);
+        findElementByLocator(element).click();
+        
     }
 
     public void addGender(String name){
         waitForElementVisible(genderIpt);
-        findElementByLocator(genderIpt).sendKeys(name);
+        findElementByLocator(genderIpt).click();
+        String locator = "//div[@class='rc-virtual-list']//div[@title='" + name +"']";
+        By element = By.xpath(locator);
+        // findElementByLocator(genderIpt).sendKeys(name);
+        findElementByLocator(element).click();
+        // Actions actions = new Actions(driver);
+        // actions.click(findElementByLocator(genderIpt))
+        //        .sendKeys(name)
+        //        .click(findElementByLocator(element))
+        //        .build()
+        //        .perform();
     }
 
     public void addMaritalStatus(String name){
-        waitForElementVisible(genderIpt);
-        findElementByLocator(genderIpt).sendKeys(name);
+        waitForElementVisible(maritalStatusIpt);
+        findElementByLocator(maritalStatusIpt).click();
+        String locator = "//div[@class='rc-virtual-list']//div[@title='" + name +"']";
+        By element = By.xpath(locator);
+        findElementByLocator(element).click();
     }
 
     public void addEthnicity(String name){
