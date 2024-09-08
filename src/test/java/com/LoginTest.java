@@ -1,6 +1,7 @@
 package com;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -17,7 +18,7 @@ public class LoginTest extends BasicTest {
         String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
-        Utils.hardWait(5000); // wait 5s
+        //Utils.hardWait(30000); // wait 5s
 
 
         LoginPage loginPage = new LoginPage(driver);
@@ -25,6 +26,8 @@ public class LoginTest extends BasicTest {
 
         // Enter username
         // driver.findElement(By.xpath("//input[@id='username']")).sendKeys("testtest@gmail.com");
+
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='username']"))); //maximum 30s
         loginPage.inputEmail("testtest@gmail.com");
 
         // Enter password
@@ -34,7 +37,7 @@ public class LoginTest extends BasicTest {
         // Click login
         // driver.findElement(By.xpath("//button[@name=\"login\"]")).click();
         loginPage.clickLoginBtn();
-        Utils.hardWait();
+        //Utils.hardWait();
 
 
         // Verify login failed

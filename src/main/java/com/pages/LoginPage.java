@@ -23,14 +23,15 @@ public class LoginPage extends BasePage {
     }
 
     public void inputEmail(String email) {
-        driver.findElement(emailInp).sendKeys(email);
+        //driver.findElement(emailInp).sendKeys(email);
+        findElementByLocator(emailInp).sendKeys(email);
     }
     public void inputPassword(String password) {
-        driver.findElement(passwordInp).sendKeys(password);
+        driver1.findElement(passwordInp).sendKeys(password);
     }
 
     public String getErrorMessage() {
-        return driver.findElement(errorText).getText();
+        return driver1.findElement(errorText).getText();
     }
     
     
