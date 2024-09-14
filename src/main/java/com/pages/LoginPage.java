@@ -1,0 +1,43 @@
+package com.pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class LoginPage extends BasePage {
+
+
+    By loginBtn = By.xpath("//button[@name=\"login\"]");
+    By emailInp = By.xpath("//input[@id='username']");
+    By passwordInp = By.xpath("//input[@id='password']");
+    By errorText = By.xpath("//ul[@class='woocommerce-error']");
+    By errorText1 = By.xpath("//div[@class='woocommerce-MyAccount-content']");
+
+
+    public LoginPage(WebDriver givenDriver) {
+        super(givenDriver);
+        //TODO Auto-generated constructor stub
+    }
+
+    public void clickLoginBtn() {
+        // driver.findElement(By.xpath("//button[@name=\"login\"]")).click();
+        findElementByLocator(loginBtn).click();
+    }
+
+    public void inputEmail(String email) {
+        //driver.findElement(emailInp).sendKeys(email);
+        findElementByLocator(emailInp).sendKeys(email);
+    }
+    public void inputPassword(String password) {
+        driver1.findElement(passwordInp).sendKeys(password);
+    }
+
+    public String getErrorMessage() {
+        return driver1.findElement(errorText).getText();
+    }
+
+    public String getErrorMessage1() {
+        return driver1.findElement(errorText1).getText();
+    }
+    
+    
+}
