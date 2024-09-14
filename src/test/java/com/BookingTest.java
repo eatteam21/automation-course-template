@@ -38,7 +38,7 @@ public class BookingTest extends BasicTest {
 
         // Verify login successfully
         // String Message = driver.findElement(By.xpath("//div[@class='woocommerce-MyAccount-content']")).getText();
-        String Message = loginPage.getErrorMessage();
+        String Message = loginPage.getErrorMessage1();
         Assert.assertTrue(Message.contains("Xin chào"));
         //Utils.hardWait();
         

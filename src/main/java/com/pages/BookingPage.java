@@ -9,7 +9,9 @@ public class BookingPage extends BasePage {
     By loginBtn = By.xpath("//button[@name=\"login\"]");
     By emailInp = By.xpath("//input[@id='username']");
     By passwordInp = By.xpath("//input[@id='password']");
-    By errorText = By.xpath("//ul[@class='woocommerce-error']");
+    //By errorText = By.xpath("//ul[@class='woocommerce-error']");
+    //By errorText = By.xpath("//div[@class='woocommerce-MyAccount-content']");
+    
     By productInp = By.xpath("(//input[@class='form-control js-typeahead tt-input'])[1]");
 
 

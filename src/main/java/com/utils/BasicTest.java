@@ -8,6 +8,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+
+import com.config.Constants;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.concurrent.TimeUnit;
 
@@ -28,9 +31,14 @@ public abstract class BasicTest {
         // driver = new ChromeDriver(options);
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-        options.addArguments("window-size=1920,1080");
-        options.addArguments("--no-sanbox");
+        if (Constants.HEADLESS) {
+            
+            options.addArguments("--headless");
+            options.addArguments("window-size=1920,1080");
+            options.addArguments("--no-sanbox");
+        } 
+
+        
         
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(options); // browser

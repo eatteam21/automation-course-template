@@ -10,6 +10,7 @@ public class LoginPage extends BasePage {
     By emailInp = By.xpath("//input[@id='username']");
     By passwordInp = By.xpath("//input[@id='password']");
     By errorText = By.xpath("//ul[@class='woocommerce-error']");
+    By errorText1 = By.xpath("//div[@class='woocommerce-MyAccount-content']");
 
 
     public LoginPage(WebDriver givenDriver) {
@@ -32,6 +33,10 @@ public class LoginPage extends BasePage {
 
     public String getErrorMessage() {
         return driver1.findElement(errorText).getText();
+    }
+
+    public String getErrorMessage1() {
+        return driver1.findElement(errorText1).getText();
     }
     
     
