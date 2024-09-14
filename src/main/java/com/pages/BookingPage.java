@@ -51,9 +51,17 @@ public class BookingPage extends BasePage {
         driver1.findElement(By.xpath("//select[@id='pa_xuat-xu']")).click();
         driver1.findElement(By.xpath("//option[@value='england']")).click();
         driver1.findElement(By.xpath("//button[@class='single_add_to_cart_button button alt']")).click();
-
-
     }
 
+            //Presses Enter Key
+            driver.findElement(By.xpath("(//input[@class='form-control js-typeahead tt-input'])[1]")).sendKeys(Keys.ENTER);
+
+            //Select product
+            driver.findElement(By.xpath("//a[@title='Bơm nước xe Mercedes SLK200, SLK300, GLK200, E260, C350-2742000207']")).click();
+    
+            //Select option in DDL
+            driver.findElement(By.xpath("//select[@id='pa_xuat-xu']")).click();
+            driver.findElement(By.xpath("//option[@value='england']")).click();
+            driver.findElement(By.xpath("//button[@class='single_add_to_cart_button button alt']")).click();
     
 }

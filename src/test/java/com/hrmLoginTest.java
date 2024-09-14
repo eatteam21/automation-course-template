@@ -10,7 +10,7 @@ import com.pages.LoginPage;
 import com.utils.BasicTest;
 import com.utils.Utils;
 
-public class LoginTest extends BasicTest {
+public class hrmLoginTest extends BasicTest {
 
 
     @Test(dataProvider = "testdata123")
