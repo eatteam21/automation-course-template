@@ -1,0 +1,142 @@
+action: Click
+  element: com.viettel.vtt.vn.emoneycustomer.dev:id/imgTransfer
+  value: ''
+  condition: ''
+
+
+- action: Click
+  element: com.viettel.vtt.vn.emoneycustomer.dev:id/layoutTransferEmoney
+  value: ''
+  condition: ''
+
+
+- action: AddValue
+  element: id:com.viettel.vtt.vn.emoneycustomer.dev:id/et_target_information
+  value: '855973329700'
+  condition: ''
+
+
+- action: AddValue
+  element: "//android.widget.EditText[@resource-id=\"com.viettel.vtt.vn.emoneycustomer.dev:id/edtContact\" and @text=\"Amount\"]"
+  value: '30000'
+  condition: ''
+
+
+- action: AddValue
+  element: "//android.widget.EditText[@resource-id=\"com.viettel.vtt.vn.emoneycustomer.dev:id/edtContact\" and @text=\"Content\"]"
+  value: 'autotest'
+  condition: ''
+
+
+- action: Click
+  element: "//android.widget.Button[@text=\"CONTINUE\"]"
+  value: ''
+  condition: ''
+
+
+- action: Click
+  element: com.viettel.vtt.vn.emoneycustomer.dev:id/key2
+  value: ''
+  condition: ''
+
+
+- action: Click
+  element: com.viettel.vtt.vn.emoneycustomer.dev:id/key0
+  value: ''
+  condition: ''
+
+
+- action: Click
+  element: com.viettel.vtt.vn.emoneycustomer.dev:id/key2
+  value: ''
+  condition: ''
+
+
+- action: Click
+  element: com.viettel.vtt.vn.emoneycustomer.dev:id/key0
+  value: ''
+  condition: ''
+
+
+- action: Click
+  element: com.viettel.vtt.vn.emoneycustomer.dev:id/key1
+  value: ''
+  condition: ''
+
+
+- action: Click
+  element: com.viettel.vtt.vn.emoneycustomer.dev:id/key1
+  value: ''
+  condition: ''
+
+
+- action: Click
+  element: class name:android.widget.Button
+  value: ''
+  condition: ''
+
+
+- action: AddValue
+  element: "//android.widget.EditText[@resource-id=\"com.viettel.vtt.vn.emoneycustomer.dev:id/edtContact\" and @text=\"30000\"]"
+  value: '300'
+  condition: ''
+
+
+- action: Click
+  element: "//android.widget.Button[@text=\"CONTINUE\"]"
+  value: ''
+  condition: ''
+
+
+- action: Click
+  element: com.viettel.vtt.vn.emoneycustomer.dev:id/key2
+  value: ''
+  condition: ''
+
+
+- action: Click
+  element: com.viettel.vtt.vn.emoneycustomer.dev:id/key0
+  value: ''
+  condition: ''
+
+
+- action: Click
+  element: com.viettel.vtt.vn.emoneycustomer.dev:id/key2
+  value: ''
+  condition: ''
+
+
+- action: Click
+  element: com.viettel.vtt.vn.emoneycustomer.dev:id/key0
+  value: ''
+  condition: ''
+
+
+- action: Click
+  element: com.viettel.vtt.vn.emoneycustomer.dev:id/key1
+  value: ''
+  condition: ''
+
+
+- action: Click
+  element: com.viettel.vtt.vn.emoneycustomer.dev:id/key1
+  value: ''
+  condition: ''
+
+
+- action: Click
+  element: com.viettel.vtt.vn.emoneycustomer.dev:id/key1
+  value: ''
+  condition: "(//android.widget.TextView[@resource-id=\"com.viettel.vtt.vn.emoneycustomer.dev:id/tvRight\"])[1]"
+
+
+- action: Click
+  element: "//androidx.recyclerview.widget.RecyclerView[@resource-id=\"com.viettel.vtt.vn.emoneycustomer.dev:id/recyclerViewLayout\"]/android.widget.LinearLayout[5]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout"
+  value: ''
+  condition: ''
+
+
+- action: Click
+  element: com.viettel.vtt.vn.emoneycustomer.dev:id/btnConfirm
+  value: ''
+  condition: ''
