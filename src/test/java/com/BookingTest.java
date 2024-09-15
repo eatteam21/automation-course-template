@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.utils.BasicTest;
+import com.utils.MobileActions;
 import com.utils.Utils;
 
 import io.appium.java_client.android.Activity;
@@ -34,8 +35,10 @@ public class BookingTest extends BasicTest {
         driver.findElement(By.xpath("(//android.view.ViewGroup[@content-desc=\"test-ADD TO CART\"])[1]")).click();
         //go to cart
         driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"test-Cart\"]/android.view.ViewGroup/android.widget.ImageView")).click();
+        Utils.hardWait(9000);
         //checkout
         driver.findElement(By.xpath("//android.widget.TextView[@text=\"CHECKOUT\"]")).click();
+        Utils.hardWait(9000);
         //FirstName
         driver.findElement(By.xpath("//android.widget.EditText[@content-desc=\"test-First Name\"]")).sendKeys("Thanh");
         //LastName
@@ -44,8 +47,17 @@ public class BookingTest extends BasicTest {
         driver.findElement(By.xpath("//android.widget.EditText[@content-desc=\"test-Zip/Postal Code\"]")).sendKeys("848484");
         //Continue
         driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"test-CONTINUE\"]")).click();
+        Utils.hardWait(9000);
+
+
+        MobileActions mobileActions = new MobileActions(driver);
+        mobileActions.verticalSwipeByPercentages(0.25, 0.75, 0.5);
+        Utils.hardWait(9000);
+
+
         //Finish
-        driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"test-FINISH\"]")).click();
+        driver.findElement(By.xpath("//android.widget.TextView[@text=\"FINISH\"]")).click();
+        Utils.hardWait(9000);
         //Backhome
         driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"test-BACK HOME\"]")).click();
         //Wait

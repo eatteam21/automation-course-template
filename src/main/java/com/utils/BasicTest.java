@@ -50,7 +50,7 @@ public abstract class BasicTest {
             // // capabilities.setCapability("appWaitForLaunch", false);
             capabilities.setCapability("automationName", "UiAutomator2");
             // // capabilities.setCapability("udid", "emulator-5554");
-            capabilities.setCapability("adbExecTimeout", 120000);
+            capabilities.setCapability("adbExecTimeout", 200000);
             try {
                 //driver = new AndroidDriver<>(AppiumDriverLocalManager.getServiceUrl(), capabilities);
                 driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723"), capabilities);
