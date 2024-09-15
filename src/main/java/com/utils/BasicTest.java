@@ -13,7 +13,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-@SuppressWarnings("rawtypes")
+@SuppressWarnings({ "rawtypes", "unused" })
 public abstract class BasicTest {
     
     public static final Logger logger = LogManager.getLogger();
