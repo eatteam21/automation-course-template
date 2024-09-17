@@ -6,110 +6,43 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.pages.LoginPage;
+import com.pages.hrmLoginPage;
 import com.utils.BasicTest;
 import com.utils.Utils;
 
 public class hrmLoginTest extends BasicTest {
 
 
-    @Test(dataProvider = "testdata123")
-    public void loginTest(String username, String password, String errormessage) throws Exception {
+    @Test(dataProvider = "DemoLogins")
+    public void loginTest(String username, String password) throws Exception {
         // Launch website
-        String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
+        String url = "https://icehrm-open.gamonoid.com/login.php";
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
         //Utils.hardWait(30000); // wait 5s
 
 
-        LoginPage loginPage = new LoginPage(driver);
+        hrmLoginPage hrmloginPage = new hrmLoginPage(driver);
 
-
-        // Enter username
-        // driver.findElement(By.xpath("//input[@id='username']")).sendKeys("testtest@gmail.com");
-
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='username']"))); //maximum 30s
-        loginPage.inputEmail(username);
-
-        // Enter password
-        // driver.findElement(By.xpath("//input[@id='password']")).sendKeys("testtest");
-        loginPage.inputPassword(password);
-
-        // Click login
-        // driver.findElement(By.xpath("//button[@name=\"login\"]")).click();
-        loginPage.clickLoginBtn();
-        //Utils.hardWait();
-
-
-        // Verify login failed
-        // String errorMessage = driver.findElement(By.xpath("//ul[@class='woocommerce-error']")).getText();
-        String errorMessage = loginPage.getErrorMessage();
-
-
-        Assert.assertEquals(errorMessage, errormessage);
-        Utils.hardWait();
+        hrmloginPage.inputEmail(username);
+        hrmloginPage.inputPassword(password);
+        hrmloginPage.clickLoginBtn();
 
     }
 
 
-    @DataProvider(name = "testdata123")
+    @DataProvider(name = "DemoLogins")
     public Object[][] testData() {
-        Object[][] testDataFeed = new Object[3][3];  //2 row, 3 column
-        testDataFeed[0][0] = "testtest@gmail.com";
-        testDataFeed[0][1] = "testtest";
-        testDataFeed[0][2] = "Lỗi: Mật khẩu bạn nhập cho địa chỉ email testtest@gmail.com không đúng. Bạn quên mật khẩu?";
-        testDataFeed[1][0] = "";
-        testDataFeed[1][1] = "testtest";
-        testDataFeed[1][2] = "Lỗi: Yêu cầu tên tài khoản.";
-        testDataFeed[2][0] = "testtest@gmail.com";
-        testDataFeed[2][1] = "";
-        testDataFeed[2][2] = "Lỗi: xxxx";
-
-
+        Object[][] testDataFeed = new Object[4][2];  //4 row, 2 column
+        testDataFeed[0][0] = "admin";
+        testDataFeed[0][1] = "admin";
+        testDataFeed[1][0] = "manager";
+        testDataFeed[1][1] = "demouserpwd";
+        testDataFeed[2][0] = "user1";
+        testDataFeed[2][1] = "demouserpwd";
+        testDataFeed[3][0] = "user2";
+        testDataFeed[3][1] = "demouserpwd";
         return testDataFeed;
 
     }
-
-
-    // @Test()
-    // public void loginTestFailedEmptyUser() throws Exception {
-    //     // Launch website
-    //     String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
-    //     driver.get(url);
-    //     Assert.assertEquals(driver.getCurrentUrl(), url);
-    //     Utils.hardWait(5000); // wait 5s
-
-
-    //     // Enter username
-    //     driver.findElement(By.xpath("//input[@id='username']")).sendKeys("");
-
-    //     // Enter password
-    //     driver.findElement(By.xpath("//input[@id='password']")).sendKeys("testtest");
-
-    //     // Click login
-    //     driver.findElement(By.xpath("//button[@name=\"login\"]")).click();
-        
-    //     Utils.hardWait();
-
-
-    //     // Verify login failed
-    //     String errorMessage = driver.findElement(By.xpath("//ul[@class='woocommerce-error']")).getText();
-
-
-    //     Assert.assertEquals(errorMessage, "Lỗi: Yêu cầu tên tài khoản.");
-    //     Utils.hardWait();
-
-
-
-    //     // Boolean display = driver.findElement(By.xpath("//button[@name=\"login\"]")).isDisplayed();
-
-    //     // Assert.assertTrue(display);
-
-    //     // BookingTest
-
-    // }
-
-
-    //loginTestSuccess
-
 }

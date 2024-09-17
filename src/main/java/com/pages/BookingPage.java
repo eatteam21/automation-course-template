@@ -13,6 +13,12 @@ public class BookingPage extends BasePage {
     //By errorText = By.xpath("//div[@class='woocommerce-MyAccount-content']");
     
     By productInp = By.xpath("(//input[@class='form-control js-typeahead tt-input'])[1]");
+    By productLink = By.xpath("//a[@title='Bơm nước xe Mercedes SLK200, SLK300, GLK200, E260, C350-2742000207']");
+
+    By optionDDL = By.xpath("//select[@id='pa_xuat-xu']");
+    By option1 = By.xpath("//option[@value='england']");
+    By cartBtn = By.xpath("//button[@class='single_add_to_cart_button button alt']");
+
 
 
     public BookingPage(WebDriver givenDriver) {
@@ -20,48 +26,20 @@ public class BookingPage extends BasePage {
         //TODO Auto-generated constructor stub
     }
 
-    // public void clickLoginBtn() {
-    //     // driver.findElement(By.xpath("//button[@name=\"login\"]")).click();
-    //     findElementByLocator(loginBtn).click();
-    // }
-
-    // public void inputEmail(String email) {
-    //     //driver.findElement(emailInp).sendKeys(email);
-    //     findElementByLocator(emailInp).sendKeys(email);
-    // }
-
-    // public void inputPassword(String password) {
-    //     driver1.findElement(passwordInp).sendKeys(password);
-    // }
-
-    // public String getErrorMessage() {
-    //     return driver1.findElement(errorText).getText();
-    // }
-
     public void inputProduct(String product) {
         findElementByLocator(productInp).sendKeys(product);
+        findElementByLocator(productInp).sendKeys(Keys.ENTER);
     }
 
-    public void selectOption(String product) {
+    public void selectOption() {
 
         //Select product
-        driver1.findElement(By.xpath("//a[@title='Bơm nước xe Mercedes SLK200, SLK300, GLK200, E260, C350-2742000207']")).click();
+        findElementByLocator(productLink).click();
 
         //Select option in DDL
-        driver1.findElement(By.xpath("//select[@id='pa_xuat-xu']")).click();
-        driver1.findElement(By.xpath("//option[@value='england']")).click();
-        driver1.findElement(By.xpath("//button[@class='single_add_to_cart_button button alt']")).click();
+        findElementByLocator(optionDDL).click();
+        findElementByLocator(option1).click();
+        findElementByLocator(cartBtn).click();
     }
-
-            //Presses Enter Key
-            driver.findElement(By.xpath("(//input[@class='form-control js-typeahead tt-input'])[1]")).sendKeys(Keys.ENTER);
-
-            //Select product
-            driver.findElement(By.xpath("//a[@title='Bơm nước xe Mercedes SLK200, SLK300, GLK200, E260, C350-2742000207']")).click();
-    
-            //Select option in DDL
-            driver.findElement(By.xpath("//select[@id='pa_xuat-xu']")).click();
-            driver.findElement(By.xpath("//option[@value='england']")).click();
-            driver.findElement(By.xpath("//button[@class='single_add_to_cart_button button alt']")).click();
     
 }
