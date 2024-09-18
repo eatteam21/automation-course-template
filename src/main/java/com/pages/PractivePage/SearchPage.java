@@ -20,10 +20,10 @@ public class SearchPage extends BasePage {
     
     //private By slideSide = By.xpath("//div[contains(@class,'c_sub_row')]");
     // private By closeButton = By.xpath("null")
-    @FindBy(xpath = "//span[contains(@class,'ui-slider-handle')][1]")
+    @FindBy(xpath = "///*[@id=\"woocommerce_price_filter-2\"]/form/div/div[1]/span[1]")
     private WebElement filterMin;
 
-    @FindBy(xpath = "//span[contains(@class,'ui-slider-handle')][2]")
+    @FindBy(xpath = "//*[@id=\"woocommerce_price_filter-2\"]/form/div/div[1]/span[2]")
     private WebElement filterMax;
 
     @FindBy(xpath = "//button[@class='button']")
@@ -56,7 +56,7 @@ public class SearchPage extends BasePage {
         //waitUntilSliderIsVisible(filterMax);
         actions.dragAndDropBy(filterMax, xOffset, 0).perform();
         System.out.println("Adjusted maximum price filter by offset: " + xOffset);
-    }
+    } 
 
     public void clickButton(){
         buttonFilter.click();

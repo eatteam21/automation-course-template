@@ -33,4 +33,8 @@ public class BasePage {
     protected void waitForElementClickable(By locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
+
+    protected void waitForElementClickable2(WebElement locator) {
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
 }

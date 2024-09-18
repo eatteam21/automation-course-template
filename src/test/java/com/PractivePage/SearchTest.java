@@ -1,4 +1,4 @@
-package com;
+package com.PractivePage;
 
 import java.util.List;
 
@@ -6,7 +6,8 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.pages.HomePage;
+import com.pages.PractivePage.HomePage;
+import com.pages.PractivePage.SearchPage;
 import com.utils.BasicTest;
 import com.utils.Utils;
 
@@ -18,7 +19,7 @@ import com.utils.Utils;
 // Click on the "Search" button.
 // Expected Result: The search results page displays products related to the keyword.
 
-public class HomeTest extends BasicTest {
+public class SearchTest extends BasicTest {
 
 
     @Test(enabled = true)
@@ -29,13 +30,15 @@ public class HomeTest extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
 
-        HomePage searchPage = new HomePage(driver);
-        searchPage.clickShop();
+        HomePage homePage = new HomePage(driver);
+        SearchPage searchPage = new SearchPage(driver);
+        homePage.clickShop();
         Utils.hardWait();
         Assert.assertEquals(driver.getCurrentUrl(), "https://practice.automationtesting.in/shop/");
-        searchPage.clickLogo();
-        Utils.hardWait();
-        searchPage.numberSlide();
+        searchPage.clickFilterMin(50);
+        searchPage.clickFilterMax(-100);
+        searchPage.clickButton();
+        searchPage.assertPricesInRange(150, 450);
         //Assert.assertEquals(driver.getCurrentUrl(), "https://tiki.vn");
         //searchPage.nameOfProduct();
 
