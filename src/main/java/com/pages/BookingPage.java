@@ -11,6 +11,9 @@ public class BookingPage extends BasePage {
     By passwordInp = By.xpath("//input[@id='password']");
     //By errorText = By.xpath("//ul[@class='woocommerce-error']");
     //By errorText = By.xpath("//div[@class='woocommerce-MyAccount-content']");
+    // Verify booking successfully
+    //String Message2 = driver.findElement(By.xpath("//div[@class='woocommerce-message']")).getText();
+    By successText = By.xpath("//div[@class='woocommerce-message']");
     
     By productInp = By.xpath("(//input[@class='form-control js-typeahead tt-input'])[1]");
     By productLink = By.xpath("//a[@title='Bơm nước xe Mercedes SLK200, SLK300, GLK200, E260, C350-2742000207']");
@@ -41,5 +44,10 @@ public class BookingPage extends BasePage {
         findElementByLocator(option1).click();
         findElementByLocator(cartBtn).click();
     }
+
+    public String getSuccessMessage() {
+        return driver1.findElement(successText).getText();
+    }
+
     
 }

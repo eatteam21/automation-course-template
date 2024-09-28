@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.pages.BookingPage;
+import com.pages.CartPage;
 import com.pages.LoginPage;
 import com.utils.BasicTest;
 import com.utils.Utils;
@@ -21,6 +22,7 @@ public class BookingTest extends BasicTest {
 
         BookingPage bookingPage = new BookingPage(driver);
         LoginPage loginPage = new LoginPage(driver);
+        CartPage cartPage = new CartPage(driver);
         //CartPage cartPage = new CartPage(driver);
 
         // Enter username
@@ -62,13 +64,15 @@ public class BookingTest extends BasicTest {
         bookingPage.selectOption();
 
         // Verify booking successfully
-        String Message2 = driver.findElement(By.xpath("//div[@class='woocommerce-message']")).getText();
+        String Message2 = bookingPage.getSuccessMessage();
 
-        // Cart Page
         Assert.assertTrue(Message2.contains("“Bơm nước xe Mercedes SLK200, SLK300, GLK200, E260, C350-2742000207” đã được thêm vào giỏ hàng."));
         Utils.hardWait();
 
-        Boolean display = driver.findElement(By.xpath("//a[contains(text(),'Bơm nước xe Mercedes')]")).isDisplayed();
+        // Cart Page
+        //Boolean display = driver.findElement(By.xpath("//a[contains(text(),'Bơm nước xe Mercedes')]")).isDisplayed();
+        //Assert.assertTrue(display);
+        Boolean display = CartPage.checkOption();
         Assert.assertTrue(display);
         Utils.hardWait();
     }
