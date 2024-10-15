@@ -5,6 +5,9 @@
 ### Run 1 script
 ```
 mvn clean test -Dtest=com.LoginTest
+
+mvn clean test -Dtest=com.xxxx.xxx
+
 ```
 
 ### Run many scripts
