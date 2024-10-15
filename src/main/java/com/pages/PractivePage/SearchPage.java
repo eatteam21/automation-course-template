@@ -20,7 +20,7 @@ public class SearchPage extends BasePage {
     
     //private By slideSide = By.xpath("//div[contains(@class,'c_sub_row')]");
     // private By closeButton = By.xpath("null")
-    @FindBy(xpath = "///*[@id=\"woocommerce_price_filter-2\"]/form/div/div[1]/span[1]")
+    @FindBy(xpath = "//*[@id=\"woocommerce_price_filter-2\"]/form/div/div[1]/span[1]")
     private WebElement filterMin;
 
     @FindBy(xpath = "//*[@id=\"woocommerce_price_filter-2\"]/form/div/div[1]/span[2]")
