@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" parallel="tests" name="DemoSuite">
+    <test thread-count="1" parallel="classes" name="DemoTest">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+              <class name="com.LoginTest" >
+                  <methods>
+                    <include name="loginTestSuccess"/>
+                  </methods>
+               </class>
+
+              <class name="com.RegisterTest" >
+                 <methods>
+                    <include name="registerTestSuccess"/>
+                 </methods>
+                
+              </class>
+
+            <class name="com.BookingTest" >
+                <methods>
+                    <include name=" BookingSuccess"/>
+                </methods>
+            </class>
+
+           <class name="com.LoginIceHrmTest" >
+                <methods>
+                    <include name="loginTestSuccess"/>
+                </methods>    
+            
+            </class>
+        </classes>
+    </test>
+</suite> <!-- Suite -->
