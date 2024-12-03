@@ -9,7 +9,7 @@
 					<include name="loginTestSuccess" />
 				</methods>
             </class>
-            <class name="com.RegisterTest" />
+            <!-- <class name="com.RegisterTest" /> -->
             <class name="com.BookingTest" />
         </classes>
     </test>

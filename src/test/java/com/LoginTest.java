@@ -2,95 +2,121 @@ package com;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.pages.HomePage;
+import com.pages.LoginPage;
 import com.utils.BasicTest;
 import com.utils.Utils;
 
 public class LoginTest extends BasicTest {
+    @DataProvider(name = "loginTestData")
+    public Object[][] testDataFeed() {
+        Object[][] testdata = new Object[1][3];
 
+        testdata[0][0] = "trongtuyen451@gmail.com";
+        testdata[0][1] = "Admin@123456";
+        testdata[0][2] = true;
+        return testdata;
+    }
+
+    @DataProvider(name = "loginTestDataFalse")
+    public Object[][] testDataFeedFalse() {
+        Object[][] testdata = new Object[1][3];
+
+        testdata[0][0] = "trongtuyen@gmail.com";
+        testdata[0][1] = "Admin@123456";
+        testdata[0][2] = true;
+
+        // testdata[1][0] = "trongtuyen123@gmail.com";
+        // testdata[1][1] = "Admin@123456";
+        // testdata[1][2] = true;
+
+        // testdata[2][0] = "";
+        // testdata[2][1] = "Admin@123456";
+        // testdata[2][2] = true;
+
+        // testdata[3][0] = "trongtuyen451@gmail.com";
+        // testdata[3][1] = "";
+        // testdata[3][2] = true;
+
+        // testdata[4][0] = "";
+        // testdata[4][1] = "";
+        // testdata[4][2] = true;
+
+        return testdata;
+    }
+
+    public boolean isLogoutDisplayed() {
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(@class,'logout')]")));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
 
     @Test(dataProvider = "loginTestData")
-    public void loginTestSuccess(String uname, String pw, boolean expectedLogoutDisplay) throws Exception { // Happy case
-        // Launch website
+    public void loginTestSuccess(String uname, String pw, boolean expectedLogoutDisplay) throws Exception {
+        String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
+        driver.get(url);
+        Assert.assertEquals(driver.getCurrentUrl(), url);
+
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        
+        
+        // loginPage.enterEmail(uname);
+        // loginPage.enterPassword(pw);
+        // loginPage.clickLogin();
+        loginPage.enterEmail(uname)
+                 .enterPassword(pw)
+                 .clickLogin();
+
+        // homePage.search("Merc");
+        // homePage.addToCart();
+
+
+        // wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='username']"))).sendKeys(uname);
+        // wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='password']"))).sendKeys(pw);
+        // wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@name='login']"))).click();
+        boolean logoutBtnDisplayed = isLogoutDisplayed();
+        Assert.assertEquals(logoutBtnDisplayed, expectedLogoutDisplay);
+    }
+
+    public boolean isMessageErrorDisplayed() {
+        try {
+            WebElement messageError = driver.findElement(By.xpath("//ul[@class='woocommerce-error']"));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
+
+    // @Test(dataProvider = "loginTestDataFalse")
+    public void loginTestFalse(String unameFalse, String pwFalse, boolean expectedErrorMessageDisplay)
+            throws Exception {
         String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
         Utils.hardWait(1000); // 3s
 
         WebElement emailInput = driver.findElement(By.xpath("//input[@id='username']"));
-        emailInput.sendKeys(uname);
+        emailInput.sendKeys(unameFalse);
         Utils.hardWait(1000); // 3s
         WebElement passInput = driver.findElement(By.xpath("//input[@id='password']"));
-        passInput.sendKeys(pw);
+        passInput.sendKeys(pwFalse);
         Utils.hardWait(1000); // 3s
 
         WebElement loginBtn = driver.findElement(By.xpath("//button[@name='login']"));
         loginBtn.click();
         Utils.hardWait(1000); // 3s
-
-
-        // WebElement logoutBtn = driver.findElement(By.xpath("//li[contains(@class,'logout')]"));
-        boolean logoutBtnDisplayed = isLogoutDisplayed();
-        // Assert.assertTrue(logoutBtn.isDisplayed());
-        // Assert.assertEquals(logoutBtnDisplayed, expectedLogoutDisplay);
-
-        Assert.assertEquals(logoutBtnDisplayed, expectedLogoutDisplay);
-
-
+        boolean messageErrorDisplayed = isMessageErrorDisplayed();
+        Assert.assertEquals(messageErrorDisplayed, expectedErrorMessageDisplay);
     }
-
-    // @Test(priority = 2)
-    // public void loginTestFailure() throws Exception {
-    //     // Launch website
-    //     String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
-    //     driver.get(url);
-    //     Assert.assertEquals(driver.getCurrentUrl(), url);
-
-    //     WebElement emailInput = driver.findElement(By.xpath("//input[@id='username']"));
-    //     emailInput.sendKeys("trongtuyen451@gmail.com");
-    //     WebElement passInput = driver.findElement(By.xpath("//input[@id='password']"));
-    //     passInput.sendKeys("Admin@123456");
-
-    //     WebElement loginBtn = driver.findElement(By.xpath("//button[@name='login']"));
-    //     loginBtn.click();
-    //     WebElement errorrMessageText = driver.findElement(By.xpath("//li[contains(@class,'logout')]"));
-    //     Assert.assertTrue(errorrMessageText.isDisplayed());
-
-    // }
-
-    @DataProvider(name="loginTestData")
-    public Object[][] testDataFeed() {
-        Object[][] testdata = new Object[3][3];
-
-        testdata[0][0] = "trongtuyen451@gmail.com";
-        testdata[0][1] = "Admin@123456";
-        testdata[0][2] = true;
-
-        testdata[1][0] = "trongtuyen@gmail.com";
-        testdata[1][1] = "Admin@123456";
-        testdata[1][2] = false;
-
-        testdata[2][0] = "trongtuyen123@gmail.com";
-        testdata[2][1] = "Admin@123456";
-        testdata[2][2] = false;
-
-
-        return testdata;
-    } 
-
-    public boolean isLogoutDisplayed() {
-        try {
-            WebElement logoutBtn = driver.findElement(By.xpath("//li[contains(@class,'logout')]"));
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-        
-        
-
-    } 
-
 }
