@@ -19,7 +19,7 @@ public class LoginPage extends BasePage {
     // @FindBy(xpath = "//input[@id='username']")
     // public WebElement emailElement;
 
-    By byEmail = By.xpath("//input[@id='username1']");
+    By byEmail = By.xpath("//input[@id='username']");
 
     By byPassword = By.xpath("//input[@id='password']");
 
