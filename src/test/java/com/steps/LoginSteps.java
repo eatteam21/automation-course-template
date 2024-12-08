@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.pages.LoginPage;
 import com.utils.Utils;
 
 import io.cucumber.java.en.Given;
@@ -39,25 +40,32 @@ public class LoginSteps {
     @When("user enters email")
     public void userEnterEmail() {
         
-        WebElement emailInput = driver.findElement(By.xpath("//input[@id='username']"));
-        emailInput.sendKeys("testtest@gmail.com");
-        Utils.hardWait(1000); // 3s
+        // WebElement emailInput = driver.findElement(By.xpath("//input[@id='username']"));
+        // emailInput.sendKeys("testtest@gmail.com");
+        // Utils.hardWait(1000); // 3s
+        LoginPage loginpage = new LoginPage(driver);
+        loginpage.enterEmail("username");
+
+        
 
     }
 
     @When("user enters password")
     public void userEnterPass() {
+
+        LoginPage loginpage = new LoginPage(driver);
+        loginpage.enterPassword("pass");
         
-        WebElement emailInput = driver.findElement(By.xpath("//input[@id='password']"));
-        emailInput.sendKeys("testtest");
-        Utils.hardWait(1000); // 3s
+        // WebElement emailInput = driver.findElement(By.xpath("//input[@id='password']"));
+        // emailInput.sendKeys("testtest");
+        // Utils.hardWait(1000); // 3s
 
     }
 
     @When("verify login successfully")
     public void verifyLogin() {
         
-       Assert.assertTrue(true);
-
+       Assert.assertTrue(false);
+        driver.quit();
     }
 }
