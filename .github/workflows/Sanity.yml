@@ -1,0 +1,43 @@
+name: Test Saniry
+on:
+    push:
+        branches:
+            - '**'
+    workflow_dispatch:
+        inputs:
+            test_suite1:
+                description: "demo xyz"
+                required: true
+                default: 'Smoke'
+jobs:
+    test-ci:
+        name: Test CI
+        timeout-minutes: 30
+        runs-on: ubuntu-latest
+        permissions:
+            contents: "read"
+            id-token: "write"
+        steps:
+        - uses: actions/checkout@v3
+
+        - name: Set up JDK
+          uses: actions/setup-java@v2
+          with:
+            distribution: 'temurin'
+            java-version: '11'
+
+        - name: Set up Maven
+          run: sudo apt-get install -y maven
+
+        - name: Install Chrome
+          run:
+            sudo apt-get update && sudo apt-get --only-upgrade install google-chrome-stable
+
+        - name: CI test
+          run:
+            mvn clean test -Dsuite=${{github.event.inputs.test_suite1}}
+        - uses: actions/upload-artifact@v3
+          with:
+            name: report-${{github.run_number}}
+            path:
+                 target/surefire-reports
