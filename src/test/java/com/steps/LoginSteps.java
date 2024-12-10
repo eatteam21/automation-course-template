@@ -37,14 +37,14 @@ public class LoginSteps {
 
     }
 
-    @When("user enters email")
-    public void userEnterEmail() {
+    @When("user enters email \"([^\"]*)\"$")
+    public void userEnterEmail(String email) {
         
         // WebElement emailInput = driver.findElement(By.xpath("//input[@id='username']"));
         // emailInput.sendKeys("testtest@gmail.com");
         // Utils.hardWait(1000); // 3s
         LoginPage loginpage = new LoginPage(driver);
-        loginpage.enterEmail("username");
+        loginpage.enterEmail(email);
 
         
 
