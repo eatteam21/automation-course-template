@@ -4,17 +4,16 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.utils.BasicTest;
 import com.utils.Utils;
 
-public class LoginTest extends BasicTest {
+public class RegisterTest extends BasicTest {
 
 
-    @Test(enabled = true, priority = 1, dataProvider = "abcxyz")
-    public void loginTest(String uname, String passw, boolean expectedLogin) throws Exception {
+    @Test(enabled = true)
+    public void loginTestSuccess() throws Exception {
         // Launch website
         String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
         driver.get(url);
@@ -24,13 +23,13 @@ public class LoginTest extends BasicTest {
 
         // Enter email
         WebElement emailInput = driver.findElement(By.xpath("//input[@id='username']"));
-        emailInput.sendKeys(uname);
+        emailInput.sendKeys("nhanvip124@gmail.com");
 
         Utils.hardWait(1000); // 3s
 
         // Enter pasword
         WebElement passInput = driver.findElement(By.xpath("//input[@id='password']"));
-        passInput.sendKeys(passw);
+        passInput.sendKeys("P@ssword1235678");
 
         // Click Login
         WebElement loginButton = driver.findElement(By.xpath("//button[@name=\"login\"]"));
@@ -42,22 +41,15 @@ public class LoginTest extends BasicTest {
         // WebElement errorMessage = driver.findElement(By.xpath("//ul[@class='woocommerce-error']"));
         Boolean isDisplayed = isErrorMessageDisplayed("//ul[@class='woocommerce-error']");
         // Assert.assertEquals(errorMessage.isDisplayed(), false);
-        if (expectedLogin){
-            Assert.assertTrue(isDisplayed);
-        } else {
-            Assert.assertFalse(isDisplayed);
-        }
-        // Assert.assertFalse(isDisplayed);
+        Assert.assertFalse(isDisplayed);
         // Assert.assertEquals(errorMessage, "An account is already registered with your email address");
-        // Assert.assertEquals(isDisplayed, expectedLogin);
-        // Assert.assertEquals(isDisplayed, "123");
 
         Utils.hardWait(); // 3s
 
     }
 
 
-    // @Test(priority = 2)
+    @Test()
     public void loginTestFailed() throws Exception {
         // Launch website
         String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
@@ -67,7 +59,7 @@ public class LoginTest extends BasicTest {
         Utils.hardWait(1000); // 3s
 
         // Enter email
-        WebElement emailInput = driver.findElement(By.xpath("//input[@id='username123']"));
+        WebElement emailInput = driver.findElement(By.xpath("//input[@id='username']"));
         emailInput.sendKeys("testtest@gmail.com");
 
         Utils.hardWait(1000); // 3s
@@ -103,21 +95,6 @@ public class LoginTest extends BasicTest {
             return false;
         }
         
-    }
-
-    @DataProvider(name = "abcxyz")
-    public Object[][] testdata(){
-        Object[][] loginTestData = new Object[2][3];
-        
-        loginTestData[0][0] = "nhanvip124@gmail.com";
-        loginTestData[0][1] = "1234";
-        loginTestData[0][2] = true;
-
-        loginTestData[1][0] = "testtest@gmail.com";
-        loginTestData[1][1] = "testtes";
-        loginTestData[1][2] = false;
-
-        return loginTestData;
     }
 
 }

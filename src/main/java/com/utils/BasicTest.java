@@ -5,7 +5,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.concurrent.TimeUnit;
@@ -17,7 +19,8 @@ public abstract class BasicTest {
     protected static WebDriver driver;
     // private String driverPath;
 
-    @BeforeMethod
+    @BeforeMethod //hook //beforeEach
+    // @BeforeClass //beforeAll
     public void preCondition() {
         // Chromedriver path
         // driverPath = "src/main/resources/WebDrivers/chromedriver.exe";
@@ -32,6 +35,7 @@ public abstract class BasicTest {
     }
 
     @AfterMethod
+    // @AfterClass
     public void postCondition(){
         // Quit the Browser
         driver.quit();
