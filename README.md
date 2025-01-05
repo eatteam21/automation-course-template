@@ -9,7 +9,7 @@
 
 ### Run many scripts
 ```
-mvn clean test -Dsuite=TestNG
+mvn clean test -Dsuite=Regression
 ```
 
 
