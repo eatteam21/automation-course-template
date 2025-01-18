@@ -1,4 +1,4 @@
-package com;
+package com.featureB;
 
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
@@ -8,20 +8,14 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.pages.LoginPage;
 import com.utils.BasicTest;
 import com.utils.Utils;
 
-public class LoginTest extends BasicTest {
-
-    
+public class featureBTest extends BasicTest {
 
 
     @Test(enabled = true, priority = 1, dataProvider = "abcxyz")
     public void loginTest(String uname, String passw, boolean expectedLogin) throws Exception {
-
-        LoginPage loginPage = new LoginPage(driver);
-
         // Launch website
         String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
         driver.get(url);
@@ -34,25 +28,20 @@ public class LoginTest extends BasicTest {
         // emailInput.sendKeys(uname);
 
         // Utils.hardWait(1000); // 3s
-        // wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='username']"))).sendKeys(uname);
-        loginPage.enterEmail(uname)
-                .enterPassword(passw)
-                .clickLogin();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='username']"))).sendKeys(uname);
 
 
         // Enter pasword
         // WebElement passInput = driver.findElement(By.xpath("//input[@id='password']"));
         // passInput.sendKeys(passw);
 
-        // wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='password']"))).sendKeys(passw);
-        // loginPage.enterPassword(passw);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='password']"))).sendKeys(passw);
 
         // Click Login
         // WebElement loginButton = driver.findElement(By.xpath("//button[@name=\"login\"]"));
         // loginButton.click();
         
-        // wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@name=\"login\"]"))).click();
-        // loginPage.clickLogin();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@name=\"login\"]"))).click();
 
 
         // Utils.hardWait(1000); // 3s
@@ -128,15 +117,15 @@ public class LoginTest extends BasicTest {
 
     @DataProvider(name = "abcxyz")
     public Object[][] testdata(){
-        Object[][] loginTestData = new Object[1][3];
+        Object[][] loginTestData = new Object[2][3];
         
         loginTestData[0][0] = "nhanvip124@gmail.com";
         loginTestData[0][1] = "1234";
         loginTestData[0][2] = true;
 
-        // loginTestData[1][0] = "testtest@gmail.com";
-        // loginTestData[1][1] = "testtes";
-        // loginTestData[1][2] = false;
+        loginTestData[1][0] = "testtest@gmail.com";
+        loginTestData[1][1] = "testtes";
+        loginTestData[1][2] = false;
 
         return loginTestData;
     }
