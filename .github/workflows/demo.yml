@@ -37,11 +37,11 @@ jobs:
 
       - name: CI test
         run: |
-          mvn clean test -Dsuite=regression
+          mvn clean test -Dtest=com.LoginTest
 
-    #   - uses: actions/upload-artifact@v3
-    #     if: failure()
-    #     with:
-    #       name: testng-report-${{ github.run_number }}
-    #       path: |
-    #         target/surefire-reports/emailable-report.html
+      - uses: actions/upload-artifact@v3
+        # if: failure()
+        with:
+          name: testng-report-${{ github.run_number }}
+          path: |
+            target/surefire-reports
